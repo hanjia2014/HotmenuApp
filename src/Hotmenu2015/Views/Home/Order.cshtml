@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Order";
+}
+
+<div class="main" data-ng-controller="HotmenuApp.Controllers.OrderController as orderController">
+    <div class="main-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="widget widget-plain">
+                        <div class="widget-content">
+                            <a href="javascript:;" class="btn btn-large btn-success btn-support-ask" data-ng-if="!orderController.showOrderDiv" data-ng-click="orderController.createOrder()">Create Order</a>
+                            <a href="javascript:;" class="btn btn-large btn-primary btn-support-ask" data-ng-if="orderController.showOrderDiv" data-ng-click="">Submit Order</a>
+                            <a href="javascript:;" class="btn btn-large btn-danger btn-support-ask pull-right" data-ng-if="orderController.showOrderDiv" data-toggle="modal" data-target="#deleteOrderDialog">Delete Order</a>
+                        </div> <!-- /widget-content -->
+                    </div>
+                </div>
+            </div>
+            <div class="row" data-ng-show="orderController.showOrderDiv">
+                <div class="span12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <i style="cursor:pointer" class="icon-plus" data-toggle="modal" data-target="#clientNameDialog"></i>
+                            <h3>Add Customer</h3>
+                        </div> <!-- /widget-header -->
+                        <div class="widget-content">
+                            <div class="pricing-plans plans-3">
+                                <div class="plan-container" data-ng-repeat="clientName in orderController.currentOrder.ClientNames">
+                                    <div data-ng-class="$index % 2 == 0 ? 'plan': 'plan green'">
+                                        <div class="plan-header">
+                                            <div class="plan-title">
+                                                {{clientName}}  <i style="cursor:pointer" class="icon-remove" data-ng-click="orderController.removeClientName($index, clientName, true);"></i>
+                                            </div> <!-- /plan-title -->
+
+                                            <div class="plan-price">
+                                                {{orderController.currentOrder.TotalByClientName(clientName) | currency}}<span class="term">Total Cost</span>
+                                            </div> <!-- /plan-price -->
+
+                                        </div> <!-- /plan-header -->
+
+                                        <div class="plan-features">
+                                            <ul>
+                                                <li><strong>Perfect</strong> for mid size companies with round the clock support </li>
+                                                <li>Flexible package</li>
+                                                <li>Email & Chat support</li>
+                                                <li>Multimedia support</li>
+                                            </ul>
+                                        </div> <!-- /plan-features -->
+
+                                        <div class="plan-actions">
+                                            <a href="javascript:;" class="btn" data-ng-click="orderController.AddOrderItem($index, clientName)">Add Item</a>
+                                        </div> <!-- /plan-actions -->
+
+                                    </div> <!-- /plan -->
+                                </div> <!-- /plan-container -->
+                            </div> <!-- /pricing-plans -->
+                        </div> <!-- /widget-content -->
+                    </div> <!-- /widget -->
+                </div> <!-- /span12 -->
+            </div> <!-- /row -->
+        </div> <!-- /container -->
+    </div> <!-- /main-inner -->
+
+    <div class="modal fade" role="dialog" id="deleteOrderDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Order</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="widget widget-plain">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-ng-click="orderController.deleteOrder()" data-dismiss="modal">Yes</a><a class="btn btn-default pull-right" data-dismiss="modal">No</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" id="clientNameDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ClientName</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="widget">
+                            <div class="widget-content">
+                                <input type="text" data-ng-model="NewClientName" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-ng-click="orderController.createClientName(NewClientName)" data-dismiss="modal">Ok</a><a class="btn btn-default pull-right" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /main -->
