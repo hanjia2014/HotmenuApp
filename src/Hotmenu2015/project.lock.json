@@ -3,6 +3,11 @@
   "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "EntityFramework/7.0.0-beta4": {
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-beta4"
+        }
+      },
       "EntityFramework.Commands/7.0.0-beta5": {
         "dependencies": {
           "EntityFramework.Relational.Design": "7.0.0-beta5",
@@ -1555,6 +1560,11 @@
       }
     },
     "DNXCore,Version=v5.0": {
+      "EntityFramework/7.0.0-beta4": {
+        "dependencies": {
+          "EntityFramework.Commands": "7.0.0-beta4"
+        }
+      },
       "EntityFramework.Commands/7.0.0-beta5": {
         "dependencies": {
           "EntityFramework.Relational.Design": "7.0.0-beta5",
@@ -4184,6 +4194,19 @@
     }
   },
   "libraries": {
+    "EntityFramework/7.0.0-beta4": {
+      "sha512": "KTplgz4PBKb33t8O0I5S8yBwkU+l9PTymzoTVav8/FGikck55Amf28EOpOZAqnkGIzCGYD5/k26P7AmVyYyTHw==",
+      "files": [
+        "caution.png",
+        "EntityFramework.7.0.0-beta4.nupkg",
+        "EntityFramework.7.0.0-beta4.nupkg.sha512",
+        "EntityFramework.nuspec",
+        "readme.html",
+        "yes.png",
+        "content/deleteme",
+        "tools/install.ps1"
+      ]
+    },
     "EntityFramework.Commands/7.0.0-beta5": {
       "serviceable": true,
       "sha512": "TFfcJ6hVXY5XleybC/zAgcudMZXdHo34AjqRPdZLLH1RoCFZdqvGWLiE04tKKgJ0Mh8LcOgrzHLzKikpXBZ31A==",
@@ -6492,7 +6515,8 @@
       "Microsoft.Framework.Configuration.UserSecrets >= 1.0.0-beta5",
       "Microsoft.Framework.Logging >= 1.0.0-beta5",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta5",
-      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta5"
+      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta5",
+      "EntityFramework >= 7.0.0-beta4"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
