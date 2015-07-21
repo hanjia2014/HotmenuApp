@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -42,6 +42,7 @@ var HotmenuApp;
                 this.createClientName = function (clientName) {
                     _this.currentOrder.ClientNames.push(clientName);
                     _this.$scope.NewClientName = '';
+                    _this.saveCurrentOrder();
                 };
                 this.removeClientName = function (index, clientName, removeItems) {
                     for (var i = 0; i < _this.currentOrder.Items.length; i++) {
@@ -51,9 +52,13 @@ var HotmenuApp;
                         }
                     }
                     _this.currentOrder.ClientNames.splice(index, 1);
+                    _this.saveCurrentOrder();
                 };
                 this.AddOrderItem = function (index, clientName) {
                     _this.$window.location.href = '/home/menu' + '?clientNameIndex=' + index + '&clientName=' + clientName;
+                };
+                this.saveCurrentOrder = function () {
+                    _this.menuService.setCurrentOrder(_this.currentOrder);
                 };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;

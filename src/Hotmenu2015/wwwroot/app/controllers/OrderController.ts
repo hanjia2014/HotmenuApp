@@ -47,7 +47,7 @@
         createClientName = (clientName: string) => {
             this.currentOrder.ClientNames.push(clientName);
             this.$scope.NewClientName = '';
-
+            this.saveCurrentOrder();
         };
 
         removeClientName = (index: number, clientName: string, removeItems: boolean) => {
@@ -60,10 +60,15 @@
             }
 
             this.currentOrder.ClientNames.splice(index, 1);
+            this.saveCurrentOrder();
         };
 
         AddOrderItem = (index: number, clientName: string) => {
             this.$window.location.href = '/home/menu' + '?clientNameIndex=' + index + '&clientName=' + clientName;
+        };
+
+        private saveCurrentOrder = () => {
+            this.menuService.setCurrentOrder(this.currentOrder);
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderController", OrderController);
