@@ -6,8 +6,8 @@
     export class MenuController extends BaseController{
         public categories: Array<Models.Category>;
         public selectedClientName: string;
-        static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q'];
-        constructor(private $scope: Scopes.IMenuScope, private $location: ng.ILocationService, private menuService: Interfaces.IMenuService, private $q: ng.IQService) {
+        static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', 'HotmenuApp.Services.UtilityService'];
+        constructor(private $scope: Scopes.IMenuScope, private $location: ng.ILocationService, private menuService: Interfaces.IMenuService, private $q: ng.IQService, private utilityService: Interfaces.IUtilityService) {
             super();
             this.$q.all([this.menuService.getCategoryPromise().then((result: any) => {
                 this.$scope.Categories = result.data;
@@ -19,13 +19,13 @@
         }
 
         addToOrder = () => {
-            var clientNameIndexParam = this.$location.search('clientNameIndex', 'clientName');
+            var clientName = this.utilityService.GetParameterByName<string>("clientName");
             this.$scope.MenuItems.forEach((item, index) => {
                 if (item.Selected) {
                     var currentOrder = this.menuService.getCurrentOrder();
                     if (currentOrder == null)
-                        currentOrder = new HotmenuApp.Models.Order();
-                    currentOrder.Items.push({ ClientName: "Han", MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: null, Id: index + 1 });
+                        currentOrder = new Models.Order();
+                    currentOrder.Items.push({ ClientName: '', MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: null, Id: index + 1 });
                     this.menuService.setCurrentOrder(currentOrder);
                 }
             });
