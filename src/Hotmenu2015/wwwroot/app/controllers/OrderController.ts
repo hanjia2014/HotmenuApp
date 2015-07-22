@@ -33,7 +33,6 @@
 
         createClientName = (clientName: string) => {
             this.currentOrder.ClientNames.push(clientName);
-            this.$scope.NewClientName = '';
             this.saveCurrentOrder();
         };
 
@@ -73,7 +72,6 @@
 
         TotalByClientName = (clientName: string) => {
             var sum: number = 0;
-            this.currentOrder = this.menuService.getCurrentOrder();
             this.currentOrder.Items.forEach((item, index) => {
                 if (item.ClientName == clientName)
                     sum = sum + item.Price;

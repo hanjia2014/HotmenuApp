@@ -30,7 +30,6 @@ var HotmenuApp;
                 };
                 this.createClientName = function (clientName) {
                     _this.currentOrder.ClientNames.push(clientName);
-                    _this.$scope.NewClientName = '';
                     _this.saveCurrentOrder();
                 };
                 this.removeClientName = function (index, clientName, removeItems) {
@@ -61,7 +60,6 @@ var HotmenuApp;
                 };
                 this.TotalByClientName = function (clientName) {
                     var sum = 0;
-                    _this.currentOrder = _this.menuService.getCurrentOrder();
                     _this.currentOrder.Items.forEach(function (item, index) {
                         if (item.ClientName == clientName)
                             sum = sum + item.Price;
