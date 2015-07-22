@@ -1,9 +1,13 @@
 ﻿module HotmenuApp.Controllers {
+    import Interfaces = HotmenuApp.Interfaces;
+    import Models = HotmenuApp.Models;
+    import Scopes = HotmenuApp.Scopes;
+
     export class MenuController extends BaseController{
-        public categories: Array<HotmenuApp.Models.Category>;
-        //public selectedCategory: HotmenuApp.Models.Category;
+        public categories: Array<Models.Category>;
+        public selectedClientName: string;
         static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q'];
-        constructor(private $scope: HotmenuApp.Scopes.IMenuScope, private $location: ng.ILocationService, private menuService: HotmenuApp.Interfaces.IMenuService, private $q: ng.IQService) {
+        constructor(private $scope: Scopes.IMenuScope, private $location: ng.ILocationService, private menuService: Interfaces.IMenuService, private $q: ng.IQService) {
             super();
             this.$q.all([this.menuService.getCategoryPromise().then((result: any) => {
                 this.$scope.Categories = result.data;
@@ -15,6 +19,7 @@
         }
 
         addToOrder = () => {
+            var clientNameIndexParam = this.$location.search('clientNameIndex', 'clientName');
             this.$scope.MenuItems.forEach((item, index) => {
                 if (item.Selected) {
                     var currentOrder = this.menuService.getCurrentOrder();
@@ -24,7 +29,6 @@
                     this.menuService.setCurrentOrder(currentOrder);
                 }
             });
-            
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.MenuController", MenuController);

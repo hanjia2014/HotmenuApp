@@ -18,6 +18,7 @@ var HotmenuApp;
                 this.menuService = menuService;
                 this.$q = $q;
                 this.addToOrder = function () {
+                    var clientNameIndexParam = _this.$location.search('clientNameIndex', 'clientName');
                     _this.$scope.MenuItems.forEach(function (item, index) {
                         if (item.Selected) {
                             var currentOrder = _this.menuService.getCurrentOrder();
@@ -36,7 +37,6 @@ var HotmenuApp;
                     })
                 ]);
             }
-            //public selectedCategory: HotmenuApp.Models.Category;
             MenuController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q'];
             return MenuController;
         })(Controllers.BaseController);
