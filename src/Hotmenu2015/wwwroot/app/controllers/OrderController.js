@@ -18,17 +18,6 @@ var HotmenuApp;
                 this.menuService = menuService;
                 this.$q = $q;
                 this.$window = $window;
-                this.addToOrder = function () {
-                    _this.$scope.MenuItems.forEach(function (item, index) {
-                        if (item.Selected) {
-                            var currentOrder = _this.menuService.getCurrentOrder();
-                            if (currentOrder == null)
-                                currentOrder = new HotmenuApp.Models.Order();
-                            currentOrder.Items.push({ ClientName: "Han", MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: null, Id: index + 1 });
-                            _this.menuService.setCurrentOrder(currentOrder);
-                        }
-                    });
-                };
                 this.createOrder = function () {
                     _this.menuService.createOrder();
                     _this.showOrderDiv = true;

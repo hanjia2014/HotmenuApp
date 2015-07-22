@@ -19,19 +19,6 @@
             this.currentOrder = this.menuService.getCurrentOrder();
         }
 
-        addToOrder = () => {
-            this.$scope.MenuItems.forEach((item, index) => {
-                if (item.Selected) {
-                    var currentOrder = this.menuService.getCurrentOrder();
-                    if (currentOrder == null)
-                        currentOrder = new HotmenuApp.Models.Order();
-                    currentOrder.Items.push({ ClientName: "Han", MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: null, Id: index + 1 });
-                    this.menuService.setCurrentOrder(currentOrder);
-                }
-            });
-            
-        };
-
         createOrder = () => {
             this.menuService.createOrder();
             this.showOrderDiv = true;

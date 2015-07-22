@@ -27,7 +27,8 @@
                     <div class="widget-header">
                         <i class="icon-list-alt"></i>
                         <h3> Menu</h3>
-                        <a class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()">Add To Order</a>  <i data-ng-if="'@ViewBag.clientName'">Order for @ViewBag.clientName</i>
+                        <a data-ng-if="menuController.hasCurrentOrder()" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()">Add To Order</a>  <i data-ng-if="'@ViewBag.clientName'">Order for @ViewBag.clientName</i>
+                        <a data-ng-if="menuController.hasCurrentOrder() == false" href="/home/order" class="btn btn-success btn-small" >Create Order</a>
                     </div>
                     <!-- /widget-header -->
                     <div class="widget-content">
