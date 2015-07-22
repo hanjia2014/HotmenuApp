@@ -57,6 +57,29 @@
         private saveCurrentOrder = () => {
             this.menuService.setCurrentOrder(this.currentOrder);
         };
+
+        deleteMenuItem = (item: Models.OrderItem) => {
+            this.currentOrder = this.menuService.getCurrentOrder();
+
+            for (var i = 0; i < this.currentOrder.Items.length; i++) {
+                var next = this.currentOrder.Items[i];
+                if (next.MenuItemId == item.Id && next.MenuItemName == item.MenuItemName) {
+                    this.currentOrder.Items.splice(i, 1);
+                }
+            }
+
+            this.menuService.setCurrentOrder(this.currentOrder);
+        };
+
+        TotalByClientName = (clientName: string) => {
+            var sum: number = 0;
+            this.currentOrder = this.menuService.getCurrentOrder();
+            this.currentOrder.Items.forEach((item, index) => {
+                if (item.ClientName == clientName)
+                    sum = sum + item.Price;
+            });
+            return sum;
+        };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderController", OrderController);
 }

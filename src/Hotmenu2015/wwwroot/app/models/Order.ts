@@ -18,13 +18,5 @@
             });
             return sum;
         };
-        public TotalByClientName = (clientName: string) => {
-            var sum: number;
-            this.Items.forEach((item, index) => {
-                if (item.ClientName.toLowerCase() == clientName.toLowerCase())
-                    sum = sum + item.Price;
-            });
-            return sum;
-        };
     }
 }

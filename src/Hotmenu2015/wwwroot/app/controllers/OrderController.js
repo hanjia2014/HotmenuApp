@@ -49,6 +49,25 @@ var HotmenuApp;
                 this.saveCurrentOrder = function () {
                     _this.menuService.setCurrentOrder(_this.currentOrder);
                 };
+                this.deleteMenuItem = function (item) {
+                    _this.currentOrder = _this.menuService.getCurrentOrder();
+                    for (var i = 0; i < _this.currentOrder.Items.length; i++) {
+                        var next = _this.currentOrder.Items[i];
+                        if (next.MenuItemId == item.Id && next.MenuItemName == item.MenuItemName) {
+                            _this.currentOrder.Items.splice(i, 1);
+                        }
+                    }
+                    _this.menuService.setCurrentOrder(_this.currentOrder);
+                };
+                this.TotalByClientName = function (clientName) {
+                    var sum = 0;
+                    _this.currentOrder = _this.menuService.getCurrentOrder();
+                    _this.currentOrder.Items.forEach(function (item, index) {
+                        if (item.ClientName == clientName)
+                            sum = sum + item.Price;
+                    });
+                    return sum;
+                };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;
                         _this.$scope.Categories.push({ Id: 0, Name: "All" });

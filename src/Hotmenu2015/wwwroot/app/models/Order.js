@@ -12,14 +12,6 @@ var HotmenuApp;
                     });
                     return sum;
                 };
-                this.TotalByClientName = function (clientName) {
-                    var sum;
-                    _this.Items.forEach(function (item, index) {
-                        if (item.ClientName.toLowerCase() == clientName.toLowerCase())
-                            sum = sum + item.Price;
-                    });
-                    return sum;
-                };
                 this.Items = new Array();
                 this.ClientNames = new Array();
             }
