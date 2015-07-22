@@ -7,6 +7,7 @@
 
     export interface IHomeScope extends IBaseScope {
         CurrentOrder: HotmenuApp.Models.Order;
+        NewClientName: string;
     }
 
     export interface IMenuScope extends IBaseScope {
@@ -15,6 +16,5 @@
 
     export interface IOrderScope extends IBaseScope {
         Order: HotmenuApp.Models.Order;
-        NewClientName: string;
     }
 }

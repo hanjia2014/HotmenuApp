@@ -18,7 +18,7 @@
                 })
             ]);
             this.selectedClientName = this.utilityService.GetParameterByName<string>("clientName");
-            if (this.selectedClientName) {
+            if (this.menuService.getCurrentOrder() != null) {
                 this.currentOrder = this.menuService.getCurrentOrder();
             }
         };
@@ -38,6 +38,12 @@
                 }
             });
             this.menuService.setCurrentOrder(this.currentOrder);
+        };
+
+        addToOrderWithClientName = (newClientName: string) => {
+            this.currentOrder.ClientNames.push(newClientName);
+            this.selectedClientName = newClientName;
+            this.addToOrder();
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.MenuController", MenuController);

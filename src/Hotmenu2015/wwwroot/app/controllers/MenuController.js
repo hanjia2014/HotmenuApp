@@ -34,6 +34,11 @@ var HotmenuApp;
                     });
                     _this.menuService.setCurrentOrder(_this.currentOrder);
                 };
+                this.addToOrderWithClientName = function (newClientName) {
+                    _this.currentOrder.ClientNames.push(newClientName);
+                    _this.selectedClientName = newClientName;
+                    _this.addToOrder();
+                };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;
                         _this.$scope.Categories.push({ Id: 0, Name: "All" });
@@ -42,7 +47,7 @@ var HotmenuApp;
                     })
                 ]);
                 this.selectedClientName = this.utilityService.GetParameterByName("clientName");
-                if (this.selectedClientName) {
+                if (this.menuService.getCurrentOrder() != null) {
                     this.currentOrder = this.menuService.getCurrentOrder();
                 }
             }

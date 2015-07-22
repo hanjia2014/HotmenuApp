@@ -27,8 +27,16 @@
                     <div class="widget-header">
                         <i class="icon-list-alt"></i>
                         <h3> Menu</h3>
-                        <a data-ng-if="menuController.hasCurrentOrder()" href="/home/order" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()">Add To Order</a>  <i data-ng-if="'@ViewBag.clientName'">Order for @ViewBag.clientName</i>
-                        <a data-ng-if="menuController.hasCurrentOrder() == false" href="/home/order" class="btn btn-success btn-small" >Create Order</a>
+                        @if (String.IsNullOrEmpty(@ViewBag.clientName))
+                        {
+                            <a data-ng-if="menuController.hasCurrentOrder()" href="/home/order" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()" data-toggle="modal" data-target="#clientNameDialog">Add To Order</a>
+
+                        }
+                        else
+                        {
+                            <a data-ng-if="menuController.hasCurrentOrder()" href="/home/order" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()">Add To Order</a>  <i data-ng-if="'@ViewBag.clientName'">Order for @ViewBag.clientName</i>
+                        }
+                        <a data-ng-if="menuController.hasCurrentOrder() == false" href="/home/order" class="btn btn-success btn-small">Create Order</a>
                     </div>
                     <!-- /widget-header -->
                     <div class="widget-content">
@@ -58,4 +66,25 @@
         <!-- /row -->
     </div>
     <!-- /container -->
+
+    <div class="modal fade" role="dialog" id="clientNameDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ClientName</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="widget widget-plain">
+                        <div class="widget-content">
+                            <input type="text" placeholder="Client Name" data-ng-model="NewClientName" autofocus />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-ng-click="menuController.addToOrderWithClientName(NewClientName)" href="/home/order" data-dismiss="modal">Ok</a><a class="btn btn-default pull-right" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
