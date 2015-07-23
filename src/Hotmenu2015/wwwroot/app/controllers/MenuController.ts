@@ -21,6 +21,10 @@
             if (this.menuService.getCurrentOrder() != null) {
                 this.currentOrder = this.menuService.getCurrentOrder();
             }
+
+            this.$scope.SetClientNameFlag = (flag: boolean) => {
+                this.$scope.AddNewClientName = flag;
+            };
         };
 
         hasCurrentOrder = () => {

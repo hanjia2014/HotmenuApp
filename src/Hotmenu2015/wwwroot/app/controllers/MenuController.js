@@ -50,6 +50,9 @@ var HotmenuApp;
                 if (this.menuService.getCurrentOrder() != null) {
                     this.currentOrder = this.menuService.getCurrentOrder();
                 }
+                this.$scope.SetClientNameFlag = function (flag) {
+                    _this.$scope.AddNewClientName = flag;
+                };
             }
             ;
             MenuController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', 'HotmenuApp.Services.UtilityService'];
