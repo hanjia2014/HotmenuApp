@@ -23,7 +23,7 @@
                             <i style="cursor:pointer" class="icon-plus" data-toggle="modal" data-target="#clientNameDialog"></i>
                             <h3>Add Customer</h3>
                         </div> <!-- /widget-header -->
-                        <div class="widget-content">
+                        <div class="widget-content fill">
                             <div class="pricing-plans plans-3">
                                 <div class="plan-container" data-ng-repeat="clientName in orderController.currentOrder.ClientNames">
                                     <div data-ng-class="$index % 2 == 0 ? 'plan': 'plan green'">
@@ -40,8 +40,8 @@
 
                                         <div class="plan-features">
                                             <div class="widget widget-table action-table">
-                                                <div class="widget-content">
-                                                    <table class="table table-striped table-bordered">
+                                                <div class="widget-content tablecontainer">
+                                                    <table class="table table-condensed table-striped table-responsive">
                                                         <thead>
                                                             <tr>
                                                                 <th> Item </th>
