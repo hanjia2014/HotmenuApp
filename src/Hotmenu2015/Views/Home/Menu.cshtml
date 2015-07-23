@@ -33,7 +33,7 @@
                         }
                         else
                         {
-                            <a data-ng-if="menuController.hasCurrentOrder()" href="/home/order" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()">Add To Order</a>  <i data-ng-if="'@ViewBag.clientName'">Order for @ViewBag.clientName</i>
+                            <a data-ng-if="menuController.hasCurrentOrder()" href="/home/order" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()">Add To Order</a>  <i data-ng-if="'@ViewBag.clientName'"> for @ViewBag.clientName</i>
                         }
                         <a data-ng-if="menuController.hasCurrentOrder() == false" href="/home/order" class="btn btn-success btn-small">Create Order</a>
                     </div>
