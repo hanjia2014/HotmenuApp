@@ -43,12 +43,16 @@ var HotmenuApp;
                     _this.menuService.setCurrentOrder(_this.currentOrder);
                 };
                 this.addToOrderWithClientName = function (newClientName) {
-                    _this.currentOrder.ClientNames.push(newClientName);
+                    if (_this.newClientNameFlag) {
+                        _this.currentOrder.ClientNames.push(newClientName);
+                    }
                     _this.selectedClientName = newClientName;
                     _this.addToOrder();
                 };
                 this.SelectedClientName = function (clientName) {
                     _this.$scope.NewClientName = clientName;
+                    _this.selectedClientName = clientName;
+                    _this.newClientNameFlag = false;
                 };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;

@@ -7,6 +7,7 @@
         public categories: Array<Models.Category>;
         public selectedClientName: string;
         private currentOrder: Models.Order;
+        public newClientNameFlag: boolean;
         static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', 'HotmenuApp.Services.UtilityService'];
         constructor(private $scope: Scopes.IMenuScope, private $location: ng.ILocationService, private menuService: Interfaces.IMenuService, private $q: ng.IQService, private utilityService: Interfaces.IUtilityService) {
             super();
@@ -66,13 +67,17 @@
         };
 
         addToOrderWithClientName = (newClientName: string) => {
-            this.currentOrder.ClientNames.push(newClientName);
+            if (this.newClientNameFlag) {
+                this.currentOrder.ClientNames.push(newClientName);
+            }
             this.selectedClientName = newClientName;
             this.addToOrder();
         };
 
         SelectedClientName = (clientName: string) => {
             this.$scope.NewClientName = clientName;
+            this.selectedClientName = clientName;
+            this.newClientNameFlag = false;
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.MenuController", MenuController);

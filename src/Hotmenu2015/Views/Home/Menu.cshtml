@@ -84,10 +84,10 @@
                                     <ul class="dropdown-menu">
                                         <li data-ng-repeat="clientName in menuController.currentOrder.ClientNames" data-ng-click="menuController.SelectedClientName(clientName)"><a href="#">{{clientName}}</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#" data-ng-click="SetClientNameFlag(true);"><i class="i"></i> Create</a></li>
+                                        <li><a href="#" data-ng-click="menuController.newClientNameFlag = true;"><i class="i"></i> Create</a></li>
                                     </ul>
                                 </div>
-                                <input class="span2 m-wrap" id="appendedInputButton" style="margin-bottom:0" type="text" placeholder="Client Name" data-ng-model="NewClientName" autofocus>
+                                <input class="span2 m-wrap" id="appendedInputButton" data-ng-disabled="menuController.newClientNameFlag == false" style="margin-bottom:0" type="text" placeholder="Client Name" data-ng-model="NewClientName" autofocus>
                             </div>
                         </div>	<!-- /controls -->
                     </div> <!-- /control-group -->
