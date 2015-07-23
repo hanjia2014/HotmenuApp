@@ -137,6 +137,7 @@
           "lib/net45/System.Interactive.Async.dll": {}
         }
       },
+      "jQuery/1.6.4": {},
       "Microsoft.AspNet.Authentication/1.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta5",
@@ -967,6 +968,49 @@
           "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
         }
       },
+      "Microsoft.AspNet.SignalR/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNet.SignalR.JS": "2.2.0",
+          "Microsoft.AspNet.SignalR.SystemWeb": "2.2.0"
+        },
+        "frameworkAssemblies": [
+          "System"
+        ]
+      },
+      "Microsoft.AspNet.SignalR.Core/2.2.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.4",
+          "Owin": "1.0",
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
+        }
+      },
+      "Microsoft.AspNet.SignalR.JS/2.2.0": {
+        "dependencies": {
+          "jQuery": "1.6.4"
+        }
+      },
+      "Microsoft.AspNet.SignalR.SystemWeb/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNet.SignalR.Core": "2.2.0",
+          "Microsoft.Owin.Host.SystemWeb": "2.1.0"
+        },
+        "frameworkAssemblies": [
+          "System"
+        ],
+        "compile": {
+          "lib/net45/Microsoft.AspNet.SignalR.SystemWeb.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.SystemWeb.dll": {}
+        }
+      },
       "Microsoft.AspNet.StaticFiles/1.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.Http.Extensions": "1.0.0-beta5",
@@ -1503,6 +1547,41 @@
           "lib/net45/Microsoft.Net.WebSockets.dll": {}
         }
       },
+      "Microsoft.Owin/2.1.0": {
+        "dependencies": {
+          "Owin": "1.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin.Host.SystemWeb/2.1.0": {
+        "dependencies": {
+          "Owin": "1.0",
+          "Microsoft.Owin": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Host.SystemWeb.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Host.SystemWeb.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security/2.1.0": {
+        "dependencies": {
+          "Owin": "1.0",
+          "Microsoft.Owin": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink.Loader/14.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.Http.Abstractions": "1.0.0-beta5",
@@ -1529,6 +1608,14 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Owin/1.0": {
+        "compile": {
+          "lib/net40/Owin.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Owin.dll": {}
         }
       },
       "Remotion.Linq/2.0.0-alpha-002": {
@@ -1663,6 +1750,7 @@
           "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/System.Interactive.Async.dll": {}
         }
       },
+      "jQuery/1.6.4": {},
       "Microsoft.AspNet.Authentication/1.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta5",
@@ -2401,6 +2489,31 @@
           "lib/dnxcore50/Microsoft.AspNet.Server.WebListener.dll": {}
         }
       },
+      "Microsoft.AspNet.SignalR/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNet.SignalR.JS": "2.2.0",
+          "Microsoft.AspNet.SignalR.SystemWeb": "2.2.0"
+        }
+      },
+      "Microsoft.AspNet.SignalR.Core/2.2.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.4",
+          "Owin": "1.0",
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0"
+        }
+      },
+      "Microsoft.AspNet.SignalR.JS/2.2.0": {
+        "dependencies": {
+          "jQuery": "1.6.4"
+        }
+      },
+      "Microsoft.AspNet.SignalR.SystemWeb/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNet.SignalR.Core": "2.2.0",
+          "Microsoft.Owin.Host.SystemWeb": "2.1.0"
+        }
+      },
       "Microsoft.AspNet.StaticFiles/1.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.Http.Extensions": "1.0.0-beta5",
@@ -2909,6 +3022,18 @@
           "lib/dnxcore50/Microsoft.Net.WebSockets.dll": {}
         }
       },
+      "Microsoft.Owin/2.1.0": {
+        "dependencies": {
+          "Owin": "1.0"
+        }
+      },
+      "Microsoft.Owin.Host.SystemWeb/2.1.0": {},
+      "Microsoft.Owin.Security/2.1.0": {
+        "dependencies": {
+          "Owin": "1.0",
+          "Microsoft.Owin": "2.1.0"
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink.Loader/14.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.Http.Abstractions": "1.0.0-beta5",
@@ -2966,6 +3091,7 @@
           "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "Owin/1.0": {},
       "Remotion.Linq/2.0.0-alpha-002": {
         "compile": {
           "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.dll": {}
@@ -4306,6 +4432,20 @@
         "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/System.Interactive.Async.XML"
       ]
     },
+    "jQuery/1.6.4": {
+      "sha512": "8RzoZQFeFYL/cINRXksLWyl8D5TKctZ/2G8hrlOLLM5OgFNI9h3t3l5tB+BBbsBUxaPUageVe0p9ruU5jrFeow==",
+      "files": [
+        "jQuery.1.6.4.nupkg",
+        "jQuery.1.6.4.nupkg.sha512",
+        "jQuery.nuspec",
+        "Content/Scripts/jquery-1.6.4-vsdoc.js",
+        "Content/Scripts/jquery-1.6.4.js",
+        "Content/Scripts/jquery-1.6.4.min.js",
+        "Tools/install.ps1",
+        "Tools/jquery-1.6.4-vsdoc-para.js",
+        "Tools/uninstall.ps1"
+      ]
+    },
     "Microsoft.AspNet.Authentication/1.0.0-beta5": {
       "serviceable": true,
       "sha512": "0aGfwSmbVHhNIQSp6dXqz6sLYD07U9Dgnw8rm/wnQDkLFfJ9iPQKBBTk/Oh/6wGwaSg9Ko7mzXTwILE42HZdZA==",
@@ -4901,6 +5041,47 @@
         "lib/dnxcore50/Microsoft.AspNet.Server.WebListener.xml"
       ]
     },
+    "Microsoft.AspNet.SignalR/2.2.0": {
+      "sha512": "pQS/VDYOuukvJL8j62jYeCDyOD/nF1juEFpwiDn91oFnA/SOt6N7xOsSRtuwe+hsRKXTphJ40rkFWVx/GEfMzQ==",
+      "files": [
+        "Microsoft.AspNet.SignalR.2.2.0.nupkg",
+        "Microsoft.AspNet.SignalR.2.2.0.nupkg.sha512",
+        "Microsoft.AspNet.SignalR.nuspec",
+        "readme.txt"
+      ]
+    },
+    "Microsoft.AspNet.SignalR.Core/2.2.0": {
+      "serviceable": true,
+      "sha512": "y+gx2iv3Da2YIkh/m8BSitF63PAs7sDJY9td9blvgrXzCvKAb664sc/2D7kNSwEiFDLDGCoax6pqe3pRRDSDHQ==",
+      "files": [
+        "Microsoft.AspNet.SignalR.Core.2.2.0.nupkg",
+        "Microsoft.AspNet.SignalR.Core.2.2.0.nupkg.sha512",
+        "Microsoft.AspNet.SignalR.Core.nuspec",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.dll",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.xml"
+      ]
+    },
+    "Microsoft.AspNet.SignalR.JS/2.2.0": {
+      "sha512": "VjALldAdg3AiBPSmP9HUmqFTOQVRhl/jZI9Sq5AZAEbiPPfDK1FRjqtVia35OXyC+wGW2n20M5QNRKFuflSUsA==",
+      "files": [
+        "Microsoft.AspNet.SignalR.JS.2.2.0.nupkg",
+        "Microsoft.AspNet.SignalR.JS.2.2.0.nupkg.sha512",
+        "Microsoft.AspNet.SignalR.JS.nuspec",
+        "content/Scripts/jquery.signalR-2.2.0.js",
+        "content/Scripts/jquery.signalR-2.2.0.min.js"
+      ]
+    },
+    "Microsoft.AspNet.SignalR.SystemWeb/2.2.0": {
+      "serviceable": true,
+      "sha512": "qfSoJuUDrfRjM2h5XsqXL25pMMvTKi8k+1lmzsAnqpNrvoiiXZwD5VMhUr2faru696QDDzXTfhN7h/dhOZYJ3Q==",
+      "files": [
+        "Microsoft.AspNet.SignalR.SystemWeb.2.2.0.nupkg",
+        "Microsoft.AspNet.SignalR.SystemWeb.2.2.0.nupkg.sha512",
+        "Microsoft.AspNet.SignalR.SystemWeb.nuspec",
+        "lib/net45/Microsoft.AspNet.SignalR.SystemWeb.dll",
+        "lib/net45/Microsoft.AspNet.SignalR.SystemWeb.XML"
+      ]
+    },
     "Microsoft.AspNet.StaticFiles/1.0.0-beta5": {
       "serviceable": true,
       "sha512": "edTL0IZMHl6KviHN/bgPyWMpP+oVVOiC4ylNjXxgMFy12rlGTry9Dk1L1iXxTajS2J0auj4HKKD1kM6kr2czLw==",
@@ -5387,6 +5568,43 @@
         "lib/net45/Microsoft.Net.WebSockets.xml"
       ]
     },
+    "Microsoft.Owin/2.1.0": {
+      "serviceable": true,
+      "sha512": "lk0kK64mlmcmtWX8YOYkZsnZKDoGEzMZhe8e1bcP+FFcgD4f2QfKwvu5Z8Bh8WS0VO7Rgk+DJ0hwW0k+S/UGMg==",
+      "files": [
+        "Microsoft.Owin.2.1.0.nupkg",
+        "Microsoft.Owin.2.1.0.nupkg.sha512",
+        "Microsoft.Owin.nuspec",
+        "lib/net40/Microsoft.Owin.dll",
+        "lib/net40/Microsoft.Owin.XML",
+        "lib/net45/Microsoft.Owin.dll",
+        "lib/net45/Microsoft.Owin.XML"
+      ]
+    },
+    "Microsoft.Owin.Host.SystemWeb/2.1.0": {
+      "serviceable": true,
+      "sha512": "S+YOPgtQuXlKGh1OZCVzvmz++2ibNeACzDlMpeXFN1QBUf9l+gstfV0f5hTbhmkDBE8LrSCBWu+9Rrte+ivNhg==",
+      "files": [
+        "Microsoft.Owin.Host.SystemWeb.2.1.0.nupkg",
+        "Microsoft.Owin.Host.SystemWeb.2.1.0.nupkg.sha512",
+        "Microsoft.Owin.Host.SystemWeb.nuspec",
+        "lib/net40/Microsoft.Owin.Host.SystemWeb.dll",
+        "lib/net40/Microsoft.Owin.Host.SystemWeb.xml",
+        "lib/net45/Microsoft.Owin.Host.SystemWeb.dll",
+        "lib/net45/Microsoft.Owin.Host.SystemWeb.xml"
+      ]
+    },
+    "Microsoft.Owin.Security/2.1.0": {
+      "serviceable": true,
+      "sha512": "4n1V0p+O6W1L0xHUM8Cjp2Y+MmmUkiCZv6PvRNIDCJD9zlerBJa2HECo9lUiWC+KuasQJ3QxB1FmipNBxdXXIQ==",
+      "files": [
+        "Microsoft.Owin.Security.2.1.0.nupkg",
+        "Microsoft.Owin.Security.2.1.0.nupkg.sha512",
+        "Microsoft.Owin.Security.nuspec",
+        "lib/net45/Microsoft.Owin.Security.dll",
+        "lib/net45/Microsoft.Owin.Security.XML"
+      ]
+    },
     "Microsoft.VisualStudio.Web.BrowserLink.Loader/14.0.0-beta5": {
       "sha512": "qKyw00koXSuLRKI+GOkdHn9FyuE21R93GZyWmVJZYXg4scb2ki3NlGT954mEVxx5WN4yqRqywe2Rc+4MSqbq1w==",
       "files": [
@@ -5442,6 +5660,15 @@
         "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
         "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
         "tools/install.ps1"
+      ]
+    },
+    "Owin/1.0": {
+      "sha512": "OseTFniKmyp76mEzOBwIKGBRS5eMoYNkMKaMXOpxx9jv88+b6mh1rSaw43vjBOItNhaLFG3d0a20PfHyibH5sw==",
+      "files": [
+        "Owin.1.0.nupkg",
+        "Owin.1.0.nupkg.sha512",
+        "Owin.nuspec",
+        "lib/net40/Owin.dll"
       ]
     },
     "Remotion.Linq/2.0.0-alpha-002": {
@@ -6516,7 +6743,8 @@
       "Microsoft.Framework.Logging >= 1.0.0-beta5",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta5",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta5",
-      "EntityFramework >= 7.0.0-beta4"
+      "EntityFramework >= 7.0.0-beta4",
+      "Microsoft.AspNet.SignalR >= 2.2.0"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
