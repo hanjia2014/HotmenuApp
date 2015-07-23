@@ -25,6 +25,14 @@ var HotmenuApp;
                     return false;
                 };
                 this.addToOrder = function () {
+                    if (_this.selectedClientName != '') {
+                        for (var index = _this.currentOrder.Items.length - 1; index >= 0; index--) {
+                            var currentOrderMenuItem = _this.currentOrder.Items[index];
+                            if (currentOrderMenuItem.ClientName == _this.selectedClientName) {
+                                _this.currentOrder.Items.splice(index, 1);
+                            }
+                        }
+                    }
                     _this.$scope.MenuItems.forEach(function (item, index) {
                         if (item.Selected) {
                             if (_this.currentOrder == null)
@@ -39,17 +47,32 @@ var HotmenuApp;
                     _this.selectedClientName = newClientName;
                     _this.addToOrder();
                 };
+                this.SelectedClientName = function (clientName) {
+                    _this.$scope.NewClientName = clientName;
+                };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;
                         _this.$scope.Categories.push({ Id: 0, Name: "All" });
                     }), this.menuService.getMenuItemPromise().then(function (result) {
                         _this.$scope.MenuItems = result.data;
                     })
-                ]);
-                this.selectedClientName = this.utilityService.GetParameterByName("clientName");
-                if (this.menuService.getCurrentOrder() != null) {
-                    this.currentOrder = this.menuService.getCurrentOrder();
-                }
+                ]).then(function () {
+                    _this.selectedClientName = _this.utilityService.GetParameterByName("clientName");
+                    if (_this.menuService.getCurrentOrder() != null) {
+                        _this.currentOrder = _this.menuService.getCurrentOrder();
+                        if (_this.currentOrder.Items != null && _this.selectedClientName != '') {
+                            for (var index = 0; index < _this.currentOrder.Items.length; index++) {
+                                var currentOrderMenuItem = _this.currentOrder.Items[index];
+                                if (currentOrderMenuItem.ClientName == _this.selectedClientName) {
+                                    for (var i = 0; i < _this.$scope.MenuItems.length; i++) {
+                                        var item = _this.$scope.MenuItems[i];
+                                        item.Selected = (item.Selected == null || item.Selected == false) ? item.Id == currentOrderMenuItem.MenuItemId : true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
                 this.$scope.SetClientNameFlag = function (flag) {
                     _this.$scope.AddNewClientName = flag;
                 };

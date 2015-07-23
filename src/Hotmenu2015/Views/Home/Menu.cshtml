@@ -79,10 +79,10 @@
                         <div class="controls">
                             <div class="input-append">
                                 <div class="btn-group">
-                                    <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+                                    <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> Customer</a>
                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li data-ng-repeat="clientName in menuController.currentOrder.ClientNames" data-ng-click="SelectedClientName = clientName"><a href="#">{{clientName}}</a></li>
+                                        <li data-ng-repeat="clientName in menuController.currentOrder.ClientNames" data-ng-click="menuController.SelectedClientName(clientName)"><a href="#">{{clientName}}</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#" data-ng-click="SetClientNameFlag(true);"><i class="i"></i> Create</a></li>
                                     </ul>
