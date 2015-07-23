@@ -79,12 +79,12 @@
                         <div class="controls">
                             <div class="input-append">
                                 <div class="btn-group">
-                                    <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> Customer</a>
+                                    <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> {{NewClientName ? NewClientName : 'Customer'}}</a>
                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li data-ng-repeat="clientName in menuController.currentOrder.ClientNames" data-ng-click="menuController.SelectedClientName(clientName)"><a href="#">{{clientName}}</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#" data-ng-click="menuController.newClientNameFlag = true;"><i class="i"></i> Create</a></li>
+                                        <li><a href="#" data-ng-click="menuController.newClientNameFlag = true; NewClientName = null;"><i class="i"></i> Create</a></li>
                                     </ul>
                                 </div>
                                 <input class="span2 m-wrap" id="appendedInputButton" data-ng-show="menuController.newClientNameFlag" style="margin-bottom:0" type="text" placeholder="Client Name" data-ng-model="NewClientName" autofocus>
