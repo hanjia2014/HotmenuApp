@@ -23,7 +23,7 @@ using Microsoft.Framework.Runtime;
 using HotmenuApp.Models;
 using HotmenuApp.Services;
 
-namespace Hotmenu2015
+namespace HotmenuApp
 {
     public class Startup
     {
