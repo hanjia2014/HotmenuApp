@@ -1,8 +1,8 @@
 ﻿using System;
-
+using Microsoft.AspNet.SignalR;
 namespace HotmenuApp.Hub
 {
-    public class OrderHub : Microsoft.AspNet.SignalR.Hub<IOrderHub>
+    public class OrderHub : Hub<IOrderHub>
     {
         public void Send(string name, string message)
         {
