@@ -2,7 +2,6 @@
 /// <reference path="../gulpfile.js" />
 /// <reference path="app/app.modules.js" />
 /// <reference path="app/app.routes.js" />
-/// <reference path="app/client.js" />
 /// <reference path="app/controllers/BaseController.js" />
 /// <reference path="app/controllers/HomeController.js" />
 /// <reference path="app/controllers/MenuController.js" />
