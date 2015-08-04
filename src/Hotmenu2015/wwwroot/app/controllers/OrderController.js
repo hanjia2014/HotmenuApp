@@ -69,7 +69,7 @@ var HotmenuApp;
                 };
                 this.Submit = function () {
                     _this.currentOrder = _this.menuService.getCurrentOrder();
-                    _this.orderHub.server.submitOrder();
+                    _this.orderHub.server.submitOrder(_this.currentOrder);
                 };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;

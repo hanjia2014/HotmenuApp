@@ -7,7 +7,7 @@ namespace HotmenuApp.Hub
 {
     public class OrderHub : Hub<IOrderHub>
     {
-        public void SubmitOrder()
+        public void SubmitOrder(object order)
         {
             bool dataProcessedSuccessfully = true;
 

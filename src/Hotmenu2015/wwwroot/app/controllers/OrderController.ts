@@ -87,7 +87,8 @@
 
         Submit = () => {
             this.currentOrder = this.menuService.getCurrentOrder();
-            this.orderHub.server.submitOrder();
+
+            this.orderHub.server.submitOrder(this.currentOrder);
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderController", OrderController);
