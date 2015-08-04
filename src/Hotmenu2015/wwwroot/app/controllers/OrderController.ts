@@ -2,8 +2,8 @@
     export class OrderController extends BaseController{
         public showOrderDiv: boolean;
         public currentOrder: HotmenuApp.Models.Order;
-        static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window'];
-        constructor(private $scope: HotmenuApp.Scopes.IOrderScope, private $location: ng.ILocationService, private menuService: HotmenuApp.Interfaces.IMenuService, private $q: ng.IQService, private $window: ng.IWindowService) {
+        static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
+        constructor(private $scope: HotmenuApp.Scopes.IOrderScope, private $location: ng.ILocationService, private menuService: HotmenuApp.Interfaces.IMenuService, private $q: ng.IQService, private $window: ng.IWindowService, private orderHub) {
             super();
             this.$q.all([this.menuService.getCategoryPromise().then((result: any) => {
                 this.$scope.Categories = result.data;
@@ -17,6 +17,12 @@
                 this.showOrderDiv = localStorage.getItem("showOrderDiv");
 
             this.currentOrder = this.menuService.getCurrentOrder();
+
+
+
+            this.orderHub.client.updateOrderProcessStatus = (order: string) => {
+                alert(order);
+            };
         }
 
         createOrder = () => {
@@ -77,6 +83,11 @@
                     sum = sum + item.Price;
             });
             return sum;
+        };
+
+        Submit = () => {
+            this.currentOrder = this.menuService.getCurrentOrder();
+            this.orderHub.server.submitOrder();
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderController", OrderController);

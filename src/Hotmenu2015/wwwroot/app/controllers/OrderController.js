@@ -10,7 +10,7 @@ var HotmenuApp;
     (function (Controllers) {
         var OrderController = (function (_super) {
             __extends(OrderController, _super);
-            function OrderController($scope, $location, menuService, $q, $window) {
+            function OrderController($scope, $location, menuService, $q, $window, orderHub) {
                 var _this = this;
                 _super.call(this);
                 this.$scope = $scope;
@@ -18,6 +18,7 @@ var HotmenuApp;
                 this.menuService = menuService;
                 this.$q = $q;
                 this.$window = $window;
+                this.orderHub = orderHub;
                 this.createOrder = function () {
                     _this.menuService.createOrder();
                     _this.showOrderDiv = true;
@@ -66,6 +67,10 @@ var HotmenuApp;
                     });
                     return sum;
                 };
+                this.Submit = function () {
+                    _this.currentOrder = _this.menuService.getCurrentOrder();
+                    _this.orderHub.server.submitOrder();
+                };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;
                         _this.$scope.Categories.push({ Id: 0, Name: "All" });
@@ -76,8 +81,11 @@ var HotmenuApp;
                 if (localStorage.getItem("showOrderDiv") != null)
                     this.showOrderDiv = localStorage.getItem("showOrderDiv");
                 this.currentOrder = this.menuService.getCurrentOrder();
+                this.orderHub.client.updateOrderProcessStatus = function (order) {
+                    alert(order);
+                };
             }
-            OrderController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window'];
+            OrderController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
             return OrderController;
         })(Controllers.BaseController);
         Controllers.OrderController = OrderController;
