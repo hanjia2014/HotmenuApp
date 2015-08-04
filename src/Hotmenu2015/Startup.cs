@@ -79,6 +79,7 @@ namespace HotmenuApp
             // Add MVC services to the services container.
             services.AddMvc();
 
+            services.AddSignalR(options => { options.Hubs.EnableDetailedErrors = true; });
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();
@@ -120,7 +121,7 @@ namespace HotmenuApp
             // app.UseGoogleAuthentication();
             // app.UseMicrosoftAccountAuthentication();
             // app.UseTwitterAuthentication();
-
+            app.UseSignalR();
             // Add MVC to the request pipeline.
             app.UseMvc(routes =>
             {
