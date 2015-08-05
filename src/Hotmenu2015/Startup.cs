@@ -23,6 +23,8 @@ using Microsoft.Framework.Runtime;
 using HotmenuApp.Models;
 using HotmenuApp.Services;
 using HotmenuApp.Areas.Admin.Models;
+using Microsoft.AspNet.Authentication;
+using Microsoft.AspNet.Authentication.Cookies;
 
 namespace HotmenuApp
 {
@@ -63,7 +65,7 @@ namespace HotmenuApp
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
             // Add Identity services to the services container.
-            services.AddIdentity<HotmenuAdmin, HotmenuUserRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -91,6 +93,12 @@ namespace HotmenuApp
             // services.AddWebApiConventions();
 
             // Register application services.
+            services.AddDataProtection();
+            services.Configure<ExternalAuthenticationOptions>(options =>
+            {
+                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+
         }
 
         // Configure is called after ConfigureServices is called.
@@ -143,6 +151,12 @@ namespace HotmenuApp
                 // Uncomment the following line to add a route for porting Web API 2 controllers.
                 // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
+
+            app.UseCookieAuthentication(option => {
+                option.LoginPath = new PathString("/admin/manager/login");
+            });
+
+
         }
     }
 }
