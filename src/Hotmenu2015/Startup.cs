@@ -54,10 +54,10 @@ namespace HotmenuApp
         public void ConfigureServices(IServiceCollection services)
         {
             // Add Entity Framework services to the services container.
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<HotmenuDbContext>(options =>
-                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+            //services.AddEntityFramework()
+            //    .AddSqlServer()
+            //    .AddDbContext<HotmenuDbContext>(options =>
+            //        options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
             services.AddEntityFramework()
                 .AddSqlServer()
