@@ -30,6 +30,10 @@ namespace HotmenuApp.Areas.Admin.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+
+            }
             return View();
         }
         [HttpGet]
