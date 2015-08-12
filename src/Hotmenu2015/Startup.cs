@@ -99,6 +99,11 @@ namespace HotmenuApp
                 options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             });
 
+            services.Configure<CookieAuthenticationOptions>(options =>
+            {
+                options.LoginPath = new PathString("/admin/manager/login");
+            });
+
         }
 
         // Configure is called after ConfigureServices is called.
