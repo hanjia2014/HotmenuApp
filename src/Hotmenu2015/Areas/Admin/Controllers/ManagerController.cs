@@ -120,6 +120,13 @@ namespace HotmenuApp.Areas.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult LogOff()
+        {
+            _signInManager.SignOut();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
         private static void EnsureDatabaseCreated(ApplicationDbContext context)
         {
             if (!_databaseChecked)
