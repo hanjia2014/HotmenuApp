@@ -22,13 +22,13 @@
                 <p>Please provide your details</p>
 
                 <div class="field">
-                    <label for="email">Username</label>
-                    <input type="text" id="email" name="email" value="" placeholder="Username" class="login username-field" />
+                    <label asp-for="Email">Username</label>
+                    <input asp-for="Email" type="text" id="email" name="email" value="" placeholder="Username" class="login username-field" />
                 </div> <!-- /field -->
 
                 <div class="field">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" />
+                    <label asp-for="Password">Password:</label>
+                    <input asp-for="Password" type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" />
                 </div> <!-- /password -->
 
             </div> <!-- /login-fields -->
@@ -36,9 +36,9 @@
             <div class="login-actions">
 
                 <span class="login-checkbox">
-                    @*@Html.CheckBoxFor(p => p.RememberMe, new { @class="field login-checkbox" })*@
-                    <input id="RememberMe" value="" name="RememberMe" type="checkbox" class="field login-checkbox" tabindex="4" />
-                    <label class="choice" for="RememberMe">Keep me signed in</label>
+                    <input asp-for="RememberMe" id="RememberMe" />
+                    @*<input id="RememberMe" value="" name="RememberMe" type="checkbox" class="field login-checkbox" tabindex="4" />*@
+                    <label asp-for="RememberMe" class="choice"></label>
                 </span>
 
                 <button class="button btn btn-success btn-large" type="submit">Sign In</button>
