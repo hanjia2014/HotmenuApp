@@ -99,7 +99,7 @@ namespace HotmenuApp.Areas.Admin.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToLocal(returnUrl);
+                    return string.IsNullOrEmpty(returnUrl) ? RedirectToAction(nameof(HomeController.Index), "Home") : RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {

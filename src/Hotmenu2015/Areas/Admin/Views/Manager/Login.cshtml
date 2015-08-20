@@ -10,7 +10,7 @@
 
     <div class="content clearfix">
 
-        @using (Html.BeginForm("Login", "Manager", FormMethod.Post, new { area = "Admin", enctype = "multipart/form-data", @class = "form-horizontal", @role = "form" }))
+        @using (Html.BeginForm("Login", "Manager", FormMethod.Post, new { area = "Admin", returnUrl = @ViewData["ReturnUrl"], enctype = "multipart/form-data", @class = "form-horizontal", @role = "form" }))
         {
             <h1>Member Login</h1>
             <hr />
@@ -37,8 +37,8 @@
             <div class="login-actions">
 
                 <span class="login-checkbox">
-                    @Html.CheckBoxFor(m => m.RememberMe, new { @type = "checkbox", @class="field login-checkbox" })
-                    @*<input id="RememberMe" asp-for="RememberMe" name="RememberMe" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />*@
+                    @*@Html.CheckBoxFor(p => p.RememberMe, new { @class="field login-checkbox" })*@
+                    <input id="RememberMe" value="" name="RememberMe" type="checkbox" class="field login-checkbox" tabindex="4" />
                     <label class="choice" for="RememberMe">Keep me signed in</label>
                 </span>
 
