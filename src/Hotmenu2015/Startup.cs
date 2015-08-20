@@ -22,7 +22,6 @@ using Microsoft.Framework.Logging.Console;
 using Microsoft.Framework.Runtime;
 using HotmenuApp.Models;
 using HotmenuApp.Services;
-using HotmenuApp.Areas.Admin.Models;
 using Microsoft.AspNet.Authentication;
 using Microsoft.AspNet.Authentication.Cookies;
 
@@ -101,7 +100,7 @@ namespace HotmenuApp
 
             services.Configure<CookieAuthenticationOptions>(options =>
             {
-                options.LoginPath = new PathString("/admin/manager/login");
+                options.LoginPath = new PathString("/account/login");
             });
 
         }
@@ -156,12 +155,6 @@ namespace HotmenuApp
                 // Uncomment the following line to add a route for porting Web API 2 controllers.
                 // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
-
-            app.UseCookieAuthentication(option => {
-                option.LoginPath = new PathString("/admin/manager/login");
-            });
-
-
         }
     }
 }

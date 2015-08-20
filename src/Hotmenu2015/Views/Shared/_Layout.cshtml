@@ -68,7 +68,7 @@
                     <li data-ng-class="'@ViewBag.Title' == 'Menu' ? 'active' : ''"><a href="~/home/menu"><i class="icon-list-alt"></i><span>Menu</span> </a> </li>
                     <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
                     <li data-ng-class="'@ViewBag.Title' == 'Order' ? 'active' : ''"><a href="~/home/order"><i class="icon-bar-chart"></i><span>Order</span> </a> </li>
-                    <li data-ng-class="'@ViewBag.Title' == 'Admin' ? 'active' : ''"><a href="~/admin/manager"><i class="icon-code"></i><span>Manager</span> </a> </li>
+                    <li data-ng-class="'@ViewBag.Title' == 'Admin' ? 'active' : ''"><a asp-route-area="Admin" asp-controller="Manager" asp-action="Index"><i class="icon-code"></i><span>Manager</span> </a> </li>
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
                         <ul class="dropdown-menu">

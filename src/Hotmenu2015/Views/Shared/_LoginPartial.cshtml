@@ -2,7 +2,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <form asp-route-area="Admin" asp-controller="Manager" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+    <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a asp-controller="Manage" asp-action="Index" title="Manage">Hello @User.GetUserName()!</a>
@@ -14,7 +14,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-route-area="Admin" asp-controller="Manager" asp-action="Register">Register</a></li>
-        <li><a asp-route-area="Admin" asp-controller="Manager" asp-action="Login">Log in</a></li>
+        <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+        <li><a asp-controller="Account" asp-action="Login">Log in</a></li>
     </ul>
 }

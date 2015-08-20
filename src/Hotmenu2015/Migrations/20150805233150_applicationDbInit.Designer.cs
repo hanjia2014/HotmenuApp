@@ -2,7 +2,7 @@ using System;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Relational.Migrations.Infrastructure;
-using HotmenuApp.Areas.Admin.Models;
+using HotmenuApp.Models;
 
 namespace Hotmenu2015.Migrations
 {

@@ -1,42 +1,48 @@
-﻿@model RegisterViewModel
-@{
-    ViewData["Title"] = "Register";
+﻿@{
+    ViewBag.Title = "Register";
 }
 
-<h2>@ViewData["Title"].</h2>
+<div class="account-container register">
 
-<form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
-    <h4>Create a new account.</h4>
-    <hr />
-    <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="ConfirmPassword" class="form-control" />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </div>
-</form>
+    <div class="content clearfix">
 
-@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}
+        <form action="#" method="post">
+
+            <h1>Signup for Free Account</h1>
+
+            <div class="login-fields">
+
+                <p>Create your free account:</p>
+
+                <div class="field">
+                    <label for="email">User Name:</label>
+                    <input type="text" id="email" name="email" value="" placeholder="User Name" class="login" />
+                </div> <!-- /field -->
+
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" value="" placeholder="Password" class="login" />
+                </div> <!-- /field -->
+
+                <div class="field">
+                    <label for="ConfirmPassword">Confirm Password:</label>
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" value="" placeholder="Confirm Password" class="login" />
+                </div> <!-- /field -->
+
+            </div> <!-- /login-fields -->
+
+            <div class="login-actions">
+
+                <button class="button btn btn-primary btn-large">Register</button>
+
+            </div> <!-- .actions -->
+
+        </form>
+
+    </div> <!-- /content -->
+
+</div> <!-- /account-container -->
+<!-- Text Under Box -->
+<div class="login-extra">
+    Already have an account? <a href="login.html">Login to your account</a>
+</div> <!-- /login-extra -->
