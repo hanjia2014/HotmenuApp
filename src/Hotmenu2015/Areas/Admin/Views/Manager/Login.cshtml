@@ -1,15 +1,16 @@
 ﻿@using System.Collections.Generic
 @using Microsoft.AspNet.Http
 @using Microsoft.AspNet.Http.Authentication
-@model HotmenuApp.Areas.Admin.Models.LoginViewModel
+@using Microsoft.AspNet.Identity;
+@using HotmenuApp.Areas.Admin.Models;
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     ViewBag.Title = "Login";
 }
 
 <div class="account-container">
-
     <div class="content clearfix">
-
         @using (Html.BeginForm("Login", "Manager", FormMethod.Post, new { area = "Admin", returnUrl = @ViewData["ReturnUrl"], enctype = "multipart/form-data", @class = "form-horizontal", @role = "form" }))
         {
             <h1>Member Login</h1>
