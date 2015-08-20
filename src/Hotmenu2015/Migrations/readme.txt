@@ -6,4 +6,6 @@
 6. run command "dnx . ef migration add InitialDatabase" to generate migration cs code
 7. run command "dnx . ef migration script -o initialDatabase.sql" to generate sql script
 
+example: 
+-- dnx . ef migration apply -c ApplicationDbContext
 note: the database needs to be manually created
