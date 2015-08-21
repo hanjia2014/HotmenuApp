@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using HotmenuApp.Models;
 
 namespace HotmenuApp.Areas.Admin.Controllers
 {
@@ -13,9 +12,16 @@ namespace HotmenuApp.Areas.Admin.Controllers
     [Authorize]
     public class ManagerController : Controller
     {
+        private HotmenuDbContext _hotmenuDbContext;
+        public ManagerController()
+        {
+            _hotmenuDbContext = new HotmenuDbContext();
+        }
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewBag.Categories = _hotmenuDbContext.Categories;
+            ViewBag.MenuItems = _hotmenuDbContext.MenuItems;
             return View();
         }
     }

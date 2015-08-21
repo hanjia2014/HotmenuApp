@@ -4,7 +4,7 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Relational.Migrations.Infrastructure;
 using HotmenuApp.Models;
 
-namespace Hotmenu2015.Migrations
+namespace HotmenuApp.Migrations
 {
     [ContextType(typeof(ApplicationDbContext))]
     partial class applicationDbInit

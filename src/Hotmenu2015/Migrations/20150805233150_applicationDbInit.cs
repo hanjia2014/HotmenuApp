@@ -3,7 +3,7 @@ using Microsoft.Data.Entity.Relational.Migrations;
 using Microsoft.Data.Entity.Relational.Migrations.Builders;
 using Microsoft.Data.Entity.Relational.Migrations.Operations;
 
-namespace Hotmenu2015.Migrations
+namespace HotmenuApp.Migrations
 {
     public partial class applicationDbInit : Migration
     {
