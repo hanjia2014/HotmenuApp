@@ -24,5 +24,11 @@ namespace HotmenuApp.Areas.Admin.Controllers
             ViewBag.MenuItems = _hotmenuDbContext.MenuItems;
             return View();
         }
+
+        public IActionResult CategoryDetails(int id)
+        {
+            var category = _hotmenuDbContext.Categories.First(p => p.Id == id);
+            return View(category);
+        }
     }
 }
