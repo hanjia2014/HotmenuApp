@@ -8,9 +8,7 @@ using HotmenuApp.Models;
 
 namespace HotmenuApp.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize]
-    public class ManagerController : Controller
+    public class ManagerController : AdminControllerBase
     {
         private HotmenuDbContext _hotmenuDbContext;
         public ManagerController()
