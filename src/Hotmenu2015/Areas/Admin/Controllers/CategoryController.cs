@@ -26,5 +26,17 @@ namespace HotmenuApp.Areas.Admin.Controllers
             return View(category);
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Category category)
+        {
+            db.Categories.Add(category);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Manager");
+        }
     }
 }
