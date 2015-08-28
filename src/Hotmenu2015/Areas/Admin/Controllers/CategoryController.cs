@@ -9,7 +9,6 @@ namespace HotmenuApp.Areas.Admin.Controllers
 {
     public class CategoryController : AdminControllerBase
     {
-        private HotmenuDbContext db = new HotmenuDbContext();
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -18,7 +17,7 @@ namespace HotmenuApp.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            var category = db.Categories.First(p => p.Id == id);
+            var category = DbContext.Categories.First(p => p.Id == id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -34,8 +33,8 @@ namespace HotmenuApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Category category)
         {
-            db.Categories.Add(category);
-            db.SaveChanges();
+            DbContext.Categories.Add(category);
+            DbContext.SaveChanges();
             return RedirectToAction("Index", "Manager");
         }
     }

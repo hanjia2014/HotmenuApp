@@ -10,22 +10,17 @@ namespace HotmenuApp.Areas.Admin.Controllers
 {
     public class ManagerController : AdminControllerBase
     {
-        private HotmenuDbContext _hotmenuDbContext;
-        public ManagerController()
-        {
-            _hotmenuDbContext = new HotmenuDbContext();
-        }
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.Categories = _hotmenuDbContext.Categories;
-            ViewBag.MenuItems = _hotmenuDbContext.MenuItems;
+            ViewBag.Categories = DbContext.Categories;
+            ViewBag.MenuItems = DbContext.MenuItems;
             return View();
         }
 
         public IActionResult CategoryDetails(int id)
         {
-            var category = _hotmenuDbContext.Categories.First(p => p.Id == id);
+            var category = DbContext.Categories.First(p => p.Id == id);
             return View(category);
         }
     }
