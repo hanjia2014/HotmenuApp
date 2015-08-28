@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Mvc;
 using HotmenuApp.Models;
 using Microsoft.AspNet.Authorization;
+using System;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,9 +34,16 @@ namespace HotmenuApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Category category)
         {
-            DbContext.Categories.Add(category);
-            DbContext.SaveChanges();
-            return RedirectToAction("Index", "Manager");
+            try
+            {
+                DbContext.Categories.Add(category);
+                DbContext.SaveChanges();
+                return RedirectToAction("Index", "Manager");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
