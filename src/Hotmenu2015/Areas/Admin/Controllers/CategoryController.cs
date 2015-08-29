@@ -8,7 +8,7 @@ using System;
 
 namespace HotmenuApp.Areas.Admin.Controllers
 {
-    public class CategoryController : AdminControllerBase
+    public class CategoryController : AdminControllerBaseWithRepository<Category, int>
     {
         // GET: /<controller>/
         public IActionResult Index()
@@ -36,8 +36,13 @@ namespace HotmenuApp.Areas.Admin.Controllers
         {
             try
             {
-                DbContext.Categories.Add(category);
-                DbContext.SaveChanges();
+                //using(var db = new HotmenuDbContext())
+                //{
+                //    db.Categories.Add(category);
+                //    db.SaveChanges();
+                //}
+                Insert(category);
+                Save();
                 return RedirectToAction("Index", "Manager");
             }
             catch (Exception e)
