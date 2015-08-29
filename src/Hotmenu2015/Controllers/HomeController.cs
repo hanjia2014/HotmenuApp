@@ -24,7 +24,6 @@ namespace HotmenuApp.Controllers
 
         public IActionResult Index()
         {
-            var item = categoryRepo.GetByID(1);
             return View();
         }
 
