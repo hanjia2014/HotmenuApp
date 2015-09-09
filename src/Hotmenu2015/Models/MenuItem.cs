@@ -22,5 +22,7 @@ namespace HotmenuApp.Models
         public decimal Price { get; set; }
         [DataMember]
         public byte[] Image { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }

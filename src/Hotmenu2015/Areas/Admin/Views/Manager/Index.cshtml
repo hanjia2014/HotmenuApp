@@ -172,12 +172,34 @@
                     <div class="widget">
                         <div class="widget-header">
                             <i class="icon-signal"></i>
-                            <h3> Area Chart Example</h3>
+                            <h3> Menu Items</h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
-                            <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
-                            <!-- /area-chart -->
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th> Category </th>
+                                        <th> Name </th>
+                                        <th> Description </th>
+                                        <th> Price </th>
+                                        <th class="td-actions"> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in ViewBag.MenuItems)
+                                    {
+                                        <tr>
+                                            <td> @item.Category.Name </td>
+                                            <td> @item.Name </td>
+                                            <td> @item.Description </td>
+                                            <td> @item.Price </td>
+                                            <td class="td-actions">@Html.ActionLink("Edit", "Edit", "Category", new { id = item.Id })</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                         <!-- /widget-content -->
                     </div>

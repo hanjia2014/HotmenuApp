@@ -13,8 +13,15 @@ namespace HotmenuApp.Areas.Admin.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.Categories = DbContext.Categories;
-            ViewBag.MenuItems = DbContext.MenuItems;
+            var categories = DbContext.Categories.ToList();
+            var menuItems = DbContext.MenuItems.ToList();
+
+            foreach (var item in menuItems)
+            {
+                item.Category = categories.Find(p => p.Id == item.CategoryId);
+            }
+            ViewBag.Categories = categories;
+            ViewBag.MenuItems = menuItems;
             return View();
         }
 
