@@ -40,6 +40,7 @@
 /// <reference path="Scripts/modernizr-2.6.2.js" />
 /// <reference path="Scripts/ngStorage.min.js" />
 /// <reference path="Scripts/respond.js" />
+/// <reference path="Scripts/smartpaginator.js" />
 /// <reference path="Scripts/template/base.js" />
 /// <reference path="Scripts/template/bootstrap.js" />
 /// <reference path="Scripts/template/chart.min.js" />
