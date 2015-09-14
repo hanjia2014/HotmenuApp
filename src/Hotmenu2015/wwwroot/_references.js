@@ -4,6 +4,7 @@
 /// <reference path="app/app.routes.js" />
 /// <reference path="app/controllers/BaseController.js" />
 /// <reference path="app/controllers/HomeController.js" />
+/// <reference path="app/controllers/managercontroller.js" />
 /// <reference path="app/controllers/MenuController.js" />
 /// <reference path="app/controllers/OrderController.js" />
 /// <reference path="app/interfaces/IMenuService.js" />

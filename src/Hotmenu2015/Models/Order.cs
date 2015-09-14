@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace HotmenuApp.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Time { get; set; }
         public List<OrderItem> Items { get; set; }
+        public List<string> ClientNames { get; set; }
         public decimal Total
         {
             get
@@ -25,6 +27,12 @@ namespace HotmenuApp.Models
         public string Status { get; set; }
         public string Note { get; set; }
         public int TableNo { get; set; }
+
+        public Order(JObject jOrder)
+        {
+            var items = jOrder.SelectToken("Items");
+            var id = jOrder.SelectToken("Id");
+        }
     }
 
     public class OrderItem
