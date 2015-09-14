@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Data.Entity.Metadata;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,11 +29,34 @@ namespace HotmenuApp.Models
         public string Status { get; set; }
         public string Note { get; set; }
         public int TableNo { get; set; }
-
-        public Order(JObject jOrder)
+        public static Order ConvertJsonToOrder(JObject jOrder)
         {
-            var items = jOrder.SelectToken("Items");
-            var id = jOrder.SelectToken("Id");
+            var order = new Order();
+            var values = jOrder.Values().ToList();
+
+            foreach(var value in values)
+            {
+                if(value.Path.Equals("Items", StringComparison.OrdinalIgnoreCase))
+                {
+                    order.Items = ConvertJsonToOrderItems(value);
+                }
+            }
+
+            return order;
+        }
+
+        private static List<OrderItem> ConvertJsonToOrderItems(JToken items)
+        {
+            var orderItems = new List<OrderItem>();
+
+            foreach(var item in items)
+            {
+                var clientName = item.Value<string>("ClientName");
+                var orderId = new Guid(item.Value<JToken>("OrderId").Value<JToken>("id").ToString());
+
+            }
+
+            return orderItems;
         }
     }
 
