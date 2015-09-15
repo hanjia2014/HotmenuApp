@@ -40,6 +40,10 @@ namespace HotmenuApp.Models
                 {
                     order.Items = ConvertJsonToOrderItems(value);
                 }
+                if (value.Path.Equals("Id", StringComparison.OrdinalIgnoreCase))
+                {
+                    order.Id = new Guid(value.Value<JToken>("id").ToString());
+                }
             }
 
             return order;
@@ -53,7 +57,12 @@ namespace HotmenuApp.Models
             {
                 var clientName = item.Value<string>("ClientName");
                 var orderId = new Guid(item.Value<JToken>("OrderId").Value<JToken>("id").ToString());
+                var menuItemId = item.Value<int>("MenuItemId");
+                var menuItemName = item.Value<string>("MenuItemName");
+                var id = item.Value<int>("Id");
+                var price = item.Value<decimal>("Price");
 
+                orderItems.Add(new OrderItem {OrderId = orderId, ClientName = clientName, MenuItemId = menuItemId, MenuItemName = menuItemName, Price = price});
             }
 
             return orderItems;
