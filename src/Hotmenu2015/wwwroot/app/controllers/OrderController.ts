@@ -87,6 +87,7 @@
 
         Submit = () => {
             this.currentOrder = this.menuService.getCurrentOrder();
+            var result = this.menuService.submitOrder(this.currentOrder);
 
             this.orderHub.server.submitOrder(this.currentOrder);
         };

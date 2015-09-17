@@ -1,4 +1,5 @@
 ﻿module HotmenuApp.Services {
+    import Models = HotmenuApp.Models;
     export class MenuService implements HotmenuApp.Interfaces.IMenuService {
         static $inject = ['$http', '$q', '$location', 'HotmenuApp.Services.StorageService'];
         private server: string;
@@ -14,8 +15,8 @@
             this.$http.get('/api/category').then(function (result) {
                 deferred.resolve(result);
             }, function (error) {
-                    deferred.reject(error);
-                });
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
 
@@ -24,8 +25,8 @@
             this.$http.get('/api/menuitem').then(function (result) {
                 deferred.resolve(result);
             }, function (error) {
-                    deferred.reject(error);
-                });
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
 
@@ -56,6 +57,19 @@
         deleteOrder = () => {
             //localStorage.removeItem('current_order');
             this.appStorage.remove('current_order');
+        }
+
+        submitOrder = (order: Models.Order) => {
+            this.$http.post("http://localhost:58019/api/order", order).success(
+                (result: any) => {
+                    return true;
+                })
+                .error(
+                (result: any) => {
+                    return false;
+                });
+
+            return false;
         }
     }
 

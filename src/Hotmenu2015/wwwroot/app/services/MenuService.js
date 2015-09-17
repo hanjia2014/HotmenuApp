@@ -24,6 +24,15 @@ var HotmenuApp;
                     //localStorage.removeItem('current_order');
                     _this.appStorage.remove('current_order');
                 };
+                this.submitOrder = function (order) {
+                    _this.$http.post("http://localhost:58019/api/order", order).success(function (result) {
+                        return true;
+                    })
+                        .error(function (result) {
+                        return false;
+                    });
+                    return false;
+                };
                 this.server = $location.host() + '/' + $location.port();
                 //this.currentOrder = new HotmenuApp.Models.Order();
             }
