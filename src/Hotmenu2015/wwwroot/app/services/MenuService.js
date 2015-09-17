@@ -25,7 +25,7 @@ var HotmenuApp;
                     _this.appStorage.remove('current_order');
                 };
                 this.submitOrder = function (order) {
-                    _this.$http.post("http://localhost:58019/api/order", order).success(function (result) {
+                    _this.$http.post('/api/order', order).success(function (result) {
                         return true;
                     })
                         .error(function (result) {

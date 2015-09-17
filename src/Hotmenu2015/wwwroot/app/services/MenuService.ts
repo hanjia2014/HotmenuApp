@@ -60,7 +60,7 @@
         }
 
         submitOrder = (order: Models.Order) => {
-            this.$http.post("http://localhost:58019/api/order", order).success(
+            this.$http.post('/api/order', order).success(
                 (result: any) => {
                     return true;
                 })
