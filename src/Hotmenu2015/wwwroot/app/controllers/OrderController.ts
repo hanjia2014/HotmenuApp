@@ -87,6 +87,17 @@
 
         Submit = () => {
             this.currentOrder = this.menuService.getCurrentOrder();
+            this.currentOrder.TableNo = this.$scope.TableNo;
+
+            var datetime = new Date();
+            var year = datetime.getFullYear();
+            var month = datetime.getMonth();
+            var date = datetime.getDate();
+            var hour = datetime.getHours();
+            var minutes = datetime.getMinutes();
+            var seconds = datetime.getSeconds();
+
+            this.currentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
             var result = this.menuService.submitOrder(this.currentOrder);
 
             this.orderHub.server.submitOrder(this.currentOrder);

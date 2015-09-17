@@ -69,6 +69,15 @@ var HotmenuApp;
                 };
                 this.Submit = function () {
                     _this.currentOrder = _this.menuService.getCurrentOrder();
+                    _this.currentOrder.TableNo = _this.$scope.TableNo;
+                    var datetime = new Date();
+                    var year = datetime.getFullYear();
+                    var month = datetime.getMonth();
+                    var date = datetime.getDate();
+                    var hour = datetime.getHours();
+                    var minutes = datetime.getMinutes();
+                    var seconds = datetime.getSeconds();
+                    _this.currentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
                     var result = _this.menuService.submitOrder(_this.currentOrder);
                     _this.orderHub.server.submitOrder(_this.currentOrder);
                 };

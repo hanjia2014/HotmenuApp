@@ -63,7 +63,7 @@ namespace HotmenuApp.Areas.Admin.Controllers
         public IActionResult Post([FromBody]Order order)
         {
             _orderHub.Clients.All.UpdateOrderProcessStatus("Hello world from order api");
-            order.Time = DateTime.Now;
+            //order.Time = DateTime.Now;
             if (!ModelState.IsValid)
             {
                 return HttpBadRequest(ModelState);

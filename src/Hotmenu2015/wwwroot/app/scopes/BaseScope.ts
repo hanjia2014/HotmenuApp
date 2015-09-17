@@ -18,5 +18,6 @@
     export interface IOrderScope extends IBaseScope {
         Order: HotmenuApp.Models.Order;
         NewClientName: string;
+        TableNo: number;
     }
 }
