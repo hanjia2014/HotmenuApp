@@ -17,7 +17,7 @@ namespace HotmenuApp.Hub
 
             Thread.Sleep(1000);
 
-            var responseString = "hello world " + DateTime.Now.ToLocalTime();
+            var responseString = "hello world from hub" + DateTime.Now.ToLocalTime();
 
             if (dataProcessedSuccessfully)
             {

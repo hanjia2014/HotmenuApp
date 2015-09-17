@@ -4,6 +4,9 @@ using HotmenuApp.Models;
 using Microsoft.AspNet.Mvc;
 using System;
 using System.Net;
+using Microsoft.AspNet.SignalR.Infrastructure;
+using Microsoft.AspNet.SignalR;
+using HotmenuApp.Hub;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,6 +16,21 @@ namespace HotmenuApp.Areas.Admin.Controllers
     public class OrderController : Controller
     {
         private HotmenuDbContext _db = new HotmenuDbContext();
+        private IConnectionManager _connectionManager;
+        private IHubContext _orderHub;
+        [FromServices]
+        public IConnectionManager ConnectionManager
+        {
+            get
+            {
+                return _connectionManager;
+            }
+            set
+            {
+                _connectionManager = value;
+                _orderHub = _connectionManager.GetHubContext<OrderHub>();
+            }
+        }
         private Order GetOrderDetails(Order order)
         {
             if (order == null) throw new ArgumentNullException("order");
@@ -44,6 +62,7 @@ namespace HotmenuApp.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Order order)
         {
+            _orderHub.Clients.All.UpdateOrderProcessStatus("Hello world from order api");
             order.Time = DateTime.Now;
             if (!ModelState.IsValid)
             {
