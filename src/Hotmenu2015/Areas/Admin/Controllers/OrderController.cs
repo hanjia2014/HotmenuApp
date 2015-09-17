@@ -60,7 +60,7 @@ namespace HotmenuApp.Areas.Admin.Controllers
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post(Order order)
+        public IActionResult Post([FromBody]Order order)
         {
             _orderHub.Clients.All.UpdateOrderProcessStatus("Hello world from order api");
             order.Time = DateTime.Now;
