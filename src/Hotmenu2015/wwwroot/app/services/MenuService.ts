@@ -43,7 +43,7 @@
 
         createOrder = () => {
             this.currentOrder = new HotmenuApp.Models.Order();
-            this.currentOrder.Id = Guid.newGuid();
+            this.currentOrder.Id = Guid.generateNewId();
             this.currentOrder.Items = new Array<HotmenuApp.Models.OrderItem>();
             this.currentOrder.ClientNames = new Array<string>();
             this.currentOrder.Note = '';

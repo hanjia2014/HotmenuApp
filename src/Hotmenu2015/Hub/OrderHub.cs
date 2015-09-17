@@ -13,7 +13,7 @@ namespace HotmenuApp.Hub
         {
             bool dataProcessedSuccessfully = true;
             
-            var submittedOrder = Order.ConvertJsonToOrder(order);
+            //var submittedOrder = Order.ConvertJsonToOrder(order);
 
             Thread.Sleep(1000);
 

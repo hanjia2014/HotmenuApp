@@ -1,6 +1,6 @@
 ﻿module HotmenuApp.Models {
     export class Order {
-        public Id: Guid;
+        public Id: string;
         public Time: Date;
         public Items: Array<OrderItem>;
         public ClientNames: Array<string>;

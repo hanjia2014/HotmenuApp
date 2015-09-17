@@ -11,7 +11,7 @@ var HotmenuApp;
                 this.appStorage = appStorage;
                 this.createOrder = function () {
                     _this.currentOrder = new HotmenuApp.Models.Order();
-                    _this.currentOrder.Id = Guid.newGuid();
+                    _this.currentOrder.Id = Guid.generateNewId();
                     _this.currentOrder.Items = new Array();
                     _this.currentOrder.ClientNames = new Array();
                     _this.currentOrder.Note = '';
