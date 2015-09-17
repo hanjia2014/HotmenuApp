@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Entity.Metadata;
+﻿using HotmenuApp.Models;
+using Microsoft.Data.Entity.Metadata;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -17,6 +18,8 @@ namespace HotmenuApp.Models
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Time { get; set; }
+
+        [JsonConverter(typeof(SingleValueArrayConverter<OrderItem>))]
         public List<OrderItem> Items { get; set; }
         public List<string> ClientNames { get; set; }
         public decimal Total
