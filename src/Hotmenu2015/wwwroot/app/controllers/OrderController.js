@@ -72,7 +72,7 @@ var HotmenuApp;
                     _this.currentOrder.TableNo = _this.$scope.TableNo;
                     var datetime = new Date();
                     var year = datetime.getFullYear();
-                    var month = datetime.getMonth();
+                    var month = datetime.getMonth() + 1;
                     var date = datetime.getDate();
                     var hour = datetime.getHours();
                     var minutes = datetime.getMinutes();
