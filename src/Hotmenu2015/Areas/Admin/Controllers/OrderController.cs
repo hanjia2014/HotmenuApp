@@ -81,7 +81,6 @@ namespace HotmenuApp.Areas.Admin.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, [FromBody]Order order)
         {
-
             var items = _db.OrderItems.ToList().FindAll(p => p.OrderId == id);
             if (items.Count > 0)
             {
