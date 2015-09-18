@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 
@@ -85,10 +86,12 @@ namespace HotmenuApp.Models
     {
         [DataMember]
         public Guid OrderId { get; set; }
+        [Key]
+        [DataMember]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [DataMember]
         public int MenuItemId { get; set; }
-        [DataMember]
-        public int Id { get; set; }
         [DataMember]
         public string MenuItemName { get; set; }
         [DataMember]

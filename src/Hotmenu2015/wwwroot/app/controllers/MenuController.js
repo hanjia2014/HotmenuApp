@@ -37,7 +37,7 @@ var HotmenuApp;
                         if (item.Selected) {
                             if (_this.currentOrder == null)
                                 _this.currentOrder = new Models.Order();
-                            _this.currentOrder.Items.push({ ClientName: _this.selectedClientName, MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: _this.menuService.getCurrentOrder().Id, Id: index + 1 });
+                            _this.currentOrder.Items.push({ ClientName: _this.selectedClientName, MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: _this.menuService.getCurrentOrder().Id });
                         }
                     });
                     _this.menuService.setCurrentOrder(_this.currentOrder);

@@ -53,7 +53,7 @@ var HotmenuApp;
                     _this.currentOrder = _this.menuService.getCurrentOrder();
                     for (var i = 0; i < _this.currentOrder.Items.length; i++) {
                         var next = _this.currentOrder.Items[i];
-                        if (next.MenuItemId == item.Id && next.MenuItemName == item.MenuItemName) {
+                        if (next.MenuItemId == item.MenuItemId && next.MenuItemName == item.MenuItemName) {
                             _this.currentOrder.Items.splice(i, 1);
                         }
                     }

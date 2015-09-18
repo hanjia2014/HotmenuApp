@@ -68,7 +68,7 @@
 
             for (var i = 0; i < this.currentOrder.Items.length; i++) {
                 var next = this.currentOrder.Items[i];
-                if (next.MenuItemId == item.Id && next.MenuItemName == item.MenuItemName) {
+                if (next.MenuItemId == item.MenuItemId && next.MenuItemName == item.MenuItemName) {
                     this.currentOrder.Items.splice(i, 1);
                 }
             }

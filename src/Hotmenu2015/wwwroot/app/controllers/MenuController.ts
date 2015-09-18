@@ -60,7 +60,7 @@
                 if (item.Selected) {
                     if (this.currentOrder == null)
                         this.currentOrder = new Models.Order();
-                    this.currentOrder.Items.push({ ClientName: this.selectedClientName, MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: this.menuService.getCurrentOrder().Id, Id: index + 1 });
+                    this.currentOrder.Items.push({ ClientName: this.selectedClientName, MenuItemId: item.Id, MenuItemName: item.Name, Price: item.Price, OrderId: this.menuService.getCurrentOrder().Id });
                 }
             });
             this.menuService.setCurrentOrder(this.currentOrder);
