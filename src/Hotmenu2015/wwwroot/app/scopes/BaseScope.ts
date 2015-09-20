@@ -1,5 +1,6 @@
 ﻿module HotmenuApp.Scopes {
     'use strick';
+    import Models = HotmenuApp.Models;
     export interface IBaseScope extends ng.IScope {
         Categories: Array<HotmenuApp.Models.Category>;
         MenuItems: Array<HotmenuApp.Models.MenuItem>;
@@ -16,7 +17,8 @@
     }
 
     export interface IOrderScope extends IBaseScope {
-        Order: HotmenuApp.Models.Order;
+        Order: Models.Order;
+        Orders: Array<Models.Order>;
         NewClientName: string;
         TableNo: number;
     }

@@ -8,6 +8,10 @@
             this.orderHub.client.updateOrderProcessStatus = (order: string) => {
                 alert(order);
             };
+
+            this.$q.all([this.menuService.getOrdersPromise().then((result: any) => {
+                this.$scope.Orders = result.data;
+            })]);
         }
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.ManagerController", ManagerController);

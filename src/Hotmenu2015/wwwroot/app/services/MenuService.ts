@@ -20,6 +20,16 @@
             return deferred.promise;
         }
 
+        public getOrdersPromise() {
+            var deferred = this.$q.defer();
+            this.$http.get('/api/order').then(function (result) {
+                deferred.resolve(result);
+            }, function (error) {
+                deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+
         public getMenuItemPromise() {
             var deferred = this.$q.defer();
             this.$http.get('/api/menuitem').then(function (result) {

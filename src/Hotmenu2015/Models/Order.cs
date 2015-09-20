@@ -23,7 +23,7 @@ namespace HotmenuApp.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Time { get; set; }
         [DataMember]
-        [JsonConverter(typeof(SingleValueArrayConverter<OrderItem>))]
+        //[JsonConverter(typeof(SingleValueArrayConverter<OrderItem>))]
         public List<OrderItem> Items { get; set; }
         [DataMember]
         public List<string> ClientNames { get; set; }
