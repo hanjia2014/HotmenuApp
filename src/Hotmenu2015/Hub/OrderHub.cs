@@ -21,17 +21,17 @@ namespace HotmenuApp.Hub
 
             if (dataProcessedSuccessfully)
             {
-                Clients.All.UpdateOrderProcessStatus(responseString);
+                Clients.All.UpdateOrderProcessStatus(order);
             }
             else
             {
-                Clients.Caller.UpdateOrderProcessStatus(responseString);
+                Clients.Caller.UpdateOrderProcessStatus(order);
             }
         }
     }
 
     public interface IOrderHub
     {
-        void UpdateOrderProcessStatus(string order);
+        void UpdateOrderProcessStatus(JObject order);
     }
 }
