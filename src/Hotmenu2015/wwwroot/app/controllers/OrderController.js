@@ -69,7 +69,7 @@ var HotmenuApp;
                 this.Submit = function () {
                     _this.currentOrder = _this.menuService.getCurrentOrder();
                     _this.currentOrder.TableNo = _this.$scope.TableNo;
-                    _this.currentOrder.Status = HotmenuApp.Models.OrderStatus.InProgress;
+                    _this.currentOrder.Status = HotmenuApp.Models.OrderStatus.Submitted;
                     var datetime = new Date();
                     var year = datetime.getFullYear();
                     var month = datetime.getMonth() + 1;

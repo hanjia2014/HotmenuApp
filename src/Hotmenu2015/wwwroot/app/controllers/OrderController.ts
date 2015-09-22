@@ -88,7 +88,7 @@
         Submit = () => {
             this.currentOrder = this.menuService.getCurrentOrder();
             this.currentOrder.TableNo = this.$scope.TableNo;
-            this.currentOrder.Status = Models.OrderStatus.InProgress;
+            this.currentOrder.Status = Models.OrderStatus.Submitted;
             var datetime = new Date();
             var year = datetime.getFullYear();
             var month = datetime.getMonth() + 1;
