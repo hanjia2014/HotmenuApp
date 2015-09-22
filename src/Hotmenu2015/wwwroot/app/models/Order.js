@@ -18,5 +18,14 @@ var HotmenuApp;
             return Order;
         })();
         Models.Order = Order;
+        var OrderStatus = (function () {
+            function OrderStatus() {
+            }
+            OrderStatus.Submitted = "Submitted";
+            OrderStatus.InProgress = "InProgress";
+            OrderStatus.Completed = "Completed";
+            return OrderStatus;
+        })();
+        Models.OrderStatus = OrderStatus;
     })(Models = HotmenuApp.Models || (HotmenuApp.Models = {}));
 })(HotmenuApp || (HotmenuApp = {}));

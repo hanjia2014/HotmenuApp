@@ -88,7 +88,7 @@
         Submit = () => {
             this.currentOrder = this.menuService.getCurrentOrder();
             this.currentOrder.TableNo = this.$scope.TableNo;
-
+            this.currentOrder.Status = Models.OrderStatus.InProgress;
             var datetime = new Date();
             var year = datetime.getFullYear();
             var month = datetime.getMonth() + 1;
@@ -100,7 +100,7 @@
             this.currentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
             var result = this.menuService.submitOrder(this.currentOrder);
 
-            this.orderHub.server.submitOrder(this.currentOrder);
+            //this.orderHub.server.submitOrder(this.currentOrder);
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderController", OrderController);

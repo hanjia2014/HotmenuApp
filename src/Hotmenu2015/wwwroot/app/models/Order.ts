@@ -19,4 +19,10 @@
             return sum;
         };
     }
+
+    export class OrderStatus {
+        public static Submitted: string = "Submitted";
+        public static InProgress: string = "InProgress";
+        public static Completed: string = "Completed";
+    }
 }

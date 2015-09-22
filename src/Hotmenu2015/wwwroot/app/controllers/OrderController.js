@@ -69,6 +69,7 @@ var HotmenuApp;
                 this.Submit = function () {
                     _this.currentOrder = _this.menuService.getCurrentOrder();
                     _this.currentOrder.TableNo = _this.$scope.TableNo;
+                    _this.currentOrder.Status = HotmenuApp.Models.OrderStatus.InProgress;
                     var datetime = new Date();
                     var year = datetime.getFullYear();
                     var month = datetime.getMonth() + 1;
@@ -78,7 +79,7 @@ var HotmenuApp;
                     var seconds = datetime.getSeconds();
                     _this.currentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
                     var result = _this.menuService.submitOrder(_this.currentOrder);
-                    _this.orderHub.server.submitOrder(_this.currentOrder);
+                    //this.orderHub.server.submitOrder(this.currentOrder);
                 };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
                         _this.$scope.Categories = result.data;
