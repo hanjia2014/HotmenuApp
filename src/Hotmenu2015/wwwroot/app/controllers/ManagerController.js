@@ -18,6 +18,16 @@ var HotmenuApp;
                 this.$q = $q;
                 this.$window = $window;
                 this.orderHub = orderHub;
+                this.OrderStatusMatch = function (status) {
+                    var count = 0;
+                    if (_this.$scope.Orders != null) {
+                        for (var i = 0; i < _this.$scope.Orders.length; i++) {
+                            if (_this.$scope.Orders[i].Status == 'InProgress')
+                                count++;
+                        }
+                    }
+                    return count;
+                };
                 this.orderHub.client.updateOrderProcessStatus = function (order) {
                     _this.$scope.$apply(function () {
                         _this.$scope.Orders.push(order);

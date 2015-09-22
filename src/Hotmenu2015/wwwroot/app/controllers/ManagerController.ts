@@ -1,6 +1,6 @@
 ﻿module HotmenuApp.Controllers {
     import Models = HotmenuApp.Models;
-    export class ManagerController extends BaseController{
+    export class ManagerController extends BaseController {
         public showOrderDiv: boolean;
         public currentOrder: HotmenuApp.Models.Order;
         static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
@@ -15,6 +15,17 @@
             this.$q.all([this.menuService.getOrdersPromise().then((result: any) => {
                 this.$scope.Orders = result.data;
             })]);
+        }
+
+        OrderStatusMatch = (status: string) => {
+            var count = 0;
+            if (this.$scope.Orders != null) {
+                for (var i = 0; i < this.$scope.Orders.length; i++) {
+                    if (this.$scope.Orders[i].Status == 'InProgress')
+                        count++;
+                }
+            }
+            return count;
         }
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.ManagerController", ManagerController);
