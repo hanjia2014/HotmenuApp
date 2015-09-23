@@ -21,7 +21,7 @@
             var count = 0;
             if (this.$scope.Orders != null) {
                 for (var i = 0; i < this.$scope.Orders.length; i++) {
-                    if (this.$scope.Orders[i].Status == 'InProgress')
+                    if (this.$scope.Orders[i].Status == status)
                         count++;
                 }
             }
