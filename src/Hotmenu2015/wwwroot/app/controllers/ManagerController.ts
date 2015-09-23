@@ -15,6 +15,10 @@
             this.$q.all([this.menuService.getOrdersPromise().then((result: any) => {
                 this.$scope.Orders = result.data;
             })]);
+
+            this.$scope.$watch(() => this.$scope.Orders, (newValue: Array<Models.Order>, oldValue: Array<Models.Order>) => {
+                this.OrderStatusMatch(Models.OrderStatus.Submitted);
+            });
         }
 
         OrderStatusMatch = (status: string) => {

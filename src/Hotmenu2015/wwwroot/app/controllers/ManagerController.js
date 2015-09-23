@@ -7,6 +7,7 @@ var HotmenuApp;
 (function (HotmenuApp) {
     var Controllers;
     (function (Controllers) {
+        var Models = HotmenuApp.Models;
         var ManagerController = (function (_super) {
             __extends(ManagerController, _super);
             function ManagerController($scope, $location, menuService, $q, $window, orderHub) {
@@ -36,6 +37,9 @@ var HotmenuApp;
                 this.$q.all([this.menuService.getOrdersPromise().then(function (result) {
                         _this.$scope.Orders = result.data;
                     })]);
+                this.$scope.$watch(function () { return _this.$scope.Orders; }, function (newValue, oldValue) {
+                    _this.OrderStatusMatch(Models.OrderStatus.Submitted);
+                });
             }
             ManagerController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
             return ManagerController;
