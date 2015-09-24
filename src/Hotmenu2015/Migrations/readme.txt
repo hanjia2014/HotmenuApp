@@ -9,3 +9,13 @@
 example: 
 -- dnx . ef migration apply -c ApplicationDbContext
 note: the database needs to be manually created
+
+
+
+
+npm
+-- in order to generate source map files for ts code, need to install typescript manually
+-- run "npm install -g typescript"
+-- open command prompt
+-- use cmd go to the folder that contains ts files
+-- run "tsc -sourcemap xxx.ts"
