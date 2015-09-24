@@ -62,8 +62,6 @@ namespace HotmenuApp.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Order order)
         {
-            _orderHub.Clients.All.UpdateOrderProcessStatus("Hello world from order api");
-            //order.Time = DateTime.Now;
             if (!ModelState.IsValid)
             {
                 return HttpBadRequest(ModelState);
@@ -73,6 +71,8 @@ namespace HotmenuApp.Areas.Admin.Controllers
             _db.OrderItems.AddRange(order.Items);
 
             _db.SaveChanges();
+
+            _orderHub.Clients.All.UpdateOrderProcessStatus(order);
 
             return RedirectToAction("Index", "Home");
         }

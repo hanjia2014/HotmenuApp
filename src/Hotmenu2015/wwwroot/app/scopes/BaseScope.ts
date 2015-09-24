@@ -21,5 +21,6 @@
         Orders: Array<Models.Order>;
         NewClientName: string;
         TableNo: number;
+        SubmittedCount: number;
     }
 }

@@ -92,7 +92,7 @@ var HotmenuApp;
                     this.showOrderDiv = localStorage.getItem("showOrderDiv");
                 this.currentOrder = this.menuService.getCurrentOrder();
                 this.orderHub.client.updateOrderProcessStatus = function (order) {
-                    alert(order);
+                    alert("The order has been submitted");
                 };
             }
             OrderController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];

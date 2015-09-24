@@ -21,7 +21,7 @@
 
 
             this.orderHub.client.updateOrderProcessStatus = (order: string) => {
-                alert(order);
+                alert("The order has been submitted");
             };
         }
 

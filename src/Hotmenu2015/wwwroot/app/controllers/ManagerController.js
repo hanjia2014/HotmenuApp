@@ -29,13 +29,18 @@ var HotmenuApp;
                     }
                     return count;
                 };
+                this.GetStatusCount = function () {
+                    _this.$scope.SubmittedCount = _this.OrderStatusMatch("Submitted");
+                };
                 this.orderHub.client.updateOrderProcessStatus = function (order) {
                     _this.$scope.$apply(function () {
                         _this.$scope.Orders.push(order);
+                        _this.GetStatusCount();
                     });
                 };
                 this.$q.all([this.menuService.getOrdersPromise().then(function (result) {
                         _this.$scope.Orders = result.data;
+                        _this.GetStatusCount();
                     })]);
                 this.$scope.$watch(function () { return _this.$scope.Orders; }, function (newValue, oldValue) {
                     _this.OrderStatusMatch(Models.OrderStatus.Submitted);
