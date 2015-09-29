@@ -1,6 +1,8 @@
 ﻿using HotmenuApp.Models;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HotmenuApp.Areas.Admin.Controllers
 {
@@ -12,6 +14,11 @@ namespace HotmenuApp.Areas.Admin.Controllers
         {
             repository = new Repository<T, K>();
         }
+
+        public IEnumerable<T> Get()
+        {
+            return repository.Get();
+        }        
 
         public void Insert(T t)
         {
