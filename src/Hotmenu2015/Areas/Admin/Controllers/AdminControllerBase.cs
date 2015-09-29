@@ -22,6 +22,16 @@ namespace HotmenuApp.Areas.Admin.Controllers
         {
             repository.Save();
         }
+
+        public void Delete(T t)
+        {
+            repository.Delete(t);
+        }
+
+        public void Update(T t)
+        {
+            repository.Update(t);
+        }
     }
 
     [Area("Admin")]
