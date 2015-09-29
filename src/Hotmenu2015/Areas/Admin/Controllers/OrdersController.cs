@@ -30,11 +30,16 @@ namespace HotmenuApp.Areas.Admin.Controllers
         }
 
         public IActionResult OrderDetails(Guid id)
+        {            
+            ViewBag.SelectedOrder = GetOrder(id);
+            return RedirectToAction("Index");
+        }
+
+        private Order GetOrder(Guid id)
         {
             var order = _orderRepo.GetByID(id);
             order.Items = _orderItemRepo.Get().ToList().FindAll(p => p.OrderId.Equals(id));
-            ViewBag.SelectedOrder = order;
-            return RedirectToAction("Index");
+            return order;
         }
     }
 }

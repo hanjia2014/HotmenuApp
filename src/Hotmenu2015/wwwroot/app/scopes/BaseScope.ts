@@ -23,4 +23,8 @@
         TableNo: number;
         SubmittedCount: number;
     }
+
+    export interface IOrderManagementScope extends IBaseScope {
+        Orders: Array<Models.Order>;
+    }
 }

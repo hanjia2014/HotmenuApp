@@ -7,6 +7,7 @@
 /// <reference path="app/controllers/managercontroller.js" />
 /// <reference path="app/controllers/MenuController.js" />
 /// <reference path="app/controllers/OrderController.js" />
+/// <reference path="app/controllers/ordermanagementcontroller.js" />
 /// <reference path="app/interfaces/IMenuService.js" />
 /// <reference path="app/interfaces/IStorageService.js" />
 /// <reference path="app/interfaces/iutilityservice.js" />

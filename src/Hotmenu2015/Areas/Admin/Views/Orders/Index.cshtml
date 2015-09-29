@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Orders";
 }
-<div class="main">
+<div class="main" data-ng-controller="HotmenuApp.Controllers.OrderManagementController as OrderManagementController">
     <div class="main-inner">
         <div class="container">
 
@@ -26,18 +26,14 @@
                         </thead>
                         <tbody>
 
-                            @foreach (var order in Model)
-                            {
-                                <tr>
-                                    <td> @order.Time.ToString("dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture) </td>
-                                    <td> @order.TableNo </td>
-                                    <td> @order.Status </td>
+                            <tr data-ng-repeat="order in Orders | orderBy:'-Time'">
+                                    <td> {{order.Time}} </td>
+                                    <td> {{order.TableNo}} </td>
+                                    <td> {{order.Status}} </td>
                                     <td class="td-actions">
-                                        @Html.ActionLink("View", "OrderDetails", new { @class= "btn btn-primary btn-small", id=order.Id})
-                                        @*<a href="javascript:" class="btn btn-primary btn-small" data-toggle="modal" data-target="#orderDetailsDialog">View</a>*@
+                                        <a href="javascript:" class="btn btn-primary btn-small" data-toggle="modal" data-target="#orderDetailsDialog">View</a>
                                     </td>
                                 </tr>
-                            }
                         </tbody>
                     </table>
                 </div>
@@ -47,7 +43,7 @@
         </div>
     </div>
 
-    <div class="modal fade" role="dialog" id="clientNameDialog">
+    <div class="modal fade" role="dialog" id="orderDetailsDialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
