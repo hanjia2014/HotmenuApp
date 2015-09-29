@@ -9,11 +9,13 @@ namespace HotmenuApp.Areas.Admin.Controllers
 {
     public class OrdersController : AdminControllerBase
     {
-        private Repository<Order, Guid> _repository;
+        private Repository<Order, Guid> _orderRepo;
+        private Repository<OrderItem, int> _orderItemRepo;
         public OrdersController()
         {
-            _repository = new Repository<Order, Guid>();
-            _repository.findElement += new FindElement<Order, Guid>(FindOrder);
+            _orderRepo = new Repository<Order, Guid>();
+            _orderRepo.findElement += new FindElement<Order, Guid>(FindOrder);
+            _orderItemRepo = new Repository<OrderItem, int>();
         }
 
         private bool FindOrder(Order t, Guid id)
@@ -24,12 +26,14 @@ namespace HotmenuApp.Areas.Admin.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View(_repository.Get().ToList());
+            return View(_orderRepo.Get().ToList());
         }
 
         public IActionResult OrderDetails(Guid id)
         {
-            ViewBag.SelectedOrder = _repository.GetByID(id);
+            var order = _orderRepo.GetByID(id);
+            order.Items = _orderItemRepo.Get().ToList().FindAll(p => p.OrderId.Equals(id));
+            ViewBag.SelectedOrder = order;
             return RedirectToAction("Index");
         }
     }
