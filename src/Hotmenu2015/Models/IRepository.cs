@@ -43,8 +43,7 @@ namespace HotmenuApp.Models
             }
 
             return null;
-        }
-        
+        }        
 
         public void Insert(T obj)
         {

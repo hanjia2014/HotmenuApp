@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using HotmenuApp.Models;
 
@@ -9,12 +7,30 @@ using HotmenuApp.Models;
 
 namespace HotmenuApp.Areas.Admin.Controllers
 {
-    public class OrdersController : AdminControllerBaseWithRepository<Order, Guid>
+    public class OrdersController : AdminControllerBase
     {
+        private Repository<Order, Guid> _repository;
+        public OrdersController()
+        {
+            _repository = new Repository<Order, Guid>();
+            _repository.findElement += new FindElement<Order, Guid>(FindOrder);
+        }
+
+        private bool FindOrder(Order t, Guid id)
+        {
+            return t.Id.Equals(id);
+        }
+
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View(Get().ToList());
+            return View(_repository.Get().ToList());
+        }
+
+        public IActionResult OrderDetails(Guid id)
+        {
+            ViewBag.SelectedOrder = _repository.GetByID(id);
+            return RedirectToAction("Index");
         }
     }
 }

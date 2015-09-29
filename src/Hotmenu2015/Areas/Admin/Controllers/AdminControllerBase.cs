@@ -39,6 +39,11 @@ namespace HotmenuApp.Areas.Admin.Controllers
         {
             repository.Update(t);
         }
+
+        public T GetById(K id)
+        {
+            return repository.GetByID(id);
+        }
     }
 
     [Area("Admin")]
