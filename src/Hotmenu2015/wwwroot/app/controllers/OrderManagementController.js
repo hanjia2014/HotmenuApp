@@ -18,6 +18,13 @@ var HotmenuApp;
                 this.$q = $q;
                 this.$window = $window;
                 this.orderHub = orderHub;
+                this.SetSelectedOrder = function (id) {
+                    for (var i = 0; i < _this.$scope.Orders.length; i++) {
+                        var order = _this.$scope.Orders[i];
+                        if (order.Id == id)
+                            _this.$scope.SelectedOrder = order;
+                    }
+                };
                 this.menuService.getOrdersPromise().then(function (result) {
                     _this.$scope.Orders = result.data;
                 });

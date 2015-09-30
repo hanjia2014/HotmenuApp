@@ -13,6 +13,14 @@
                 
             };
         }
+
+        SetSelectedOrder = (id: string) => {
+            for (var i = 0; i < this.$scope.Orders.length; i++) {
+                var order = this.$scope.Orders[i];
+                if (order.Id == id)
+                    this.$scope.SelectedOrder = order;
+            }
+        }
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderManagementController", OrderManagementController);
 }

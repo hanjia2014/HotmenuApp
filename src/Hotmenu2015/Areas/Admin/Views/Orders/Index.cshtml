@@ -31,7 +31,7 @@
                                     <td> {{order.TableNo}} </td>
                                     <td> {{order.Status}} </td>
                                     <td class="td-actions">
-                                        <a href="javascript:" class="btn btn-primary btn-small" data-toggle="modal" data-target="#orderDetailsDialog">View</a>
+                                        <a href="javascript:" class="btn btn-primary btn-small" data-toggle="modal" data-target="#orderDetailsDialog" data-ng-click="OrderManagementController.SetSelectedOrder(order.Id)">View</a>
                                     </td>
                                 </tr>
                         </tbody>
@@ -54,15 +54,8 @@
 
                     <div class="control-group">
                         <div class="controls">
-                            <div class="input-append">
-                                @if (ViewBag.SelectedOrder != null)
-                                {
-                                    var selectedOrder = ViewBag.SelectedOrder as Order;
-                                    if (selectedOrder != null)
-                                    {
-                                        @selectedOrder.Items.Count;
-                                    }
-                                }
+                            <div class="input-append" data-ng-if="SelectedOrder != null">
+                                {{SelectedOrder.Id}}
                             </div>
                         </div>	<!-- /controls -->
                     </div> <!-- /control-group -->
