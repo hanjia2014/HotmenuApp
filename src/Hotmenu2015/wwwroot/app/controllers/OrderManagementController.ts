@@ -10,7 +10,9 @@
             });
 
             this.orderHub.client.updateOrderProcessStatus = (order: Models.Order) => {
-                
+                this.$scope.$apply(() => {
+                    this.$scope.Orders.push(order);
+                });
             };
         }
 

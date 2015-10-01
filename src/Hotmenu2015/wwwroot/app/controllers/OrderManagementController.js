@@ -29,6 +29,9 @@ var HotmenuApp;
                     _this.$scope.Orders = result.data;
                 });
                 this.orderHub.client.updateOrderProcessStatus = function (order) {
+                    _this.$scope.$apply(function () {
+                        _this.$scope.Orders.push(order);
+                    });
                 };
             }
             OrderManagementController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
