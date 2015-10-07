@@ -34,7 +34,7 @@ var HotmenuApp;
                     return false;
                 };
                 this.updateOrder = function (id, order) {
-                    _this.$http.put('/api/order', { id: id, order: order }).success(function (result) {
+                    _this.$http.put('/api/order/' + id, order).success(function (result) {
                         return true;
                     })
                         .error(function (result) {

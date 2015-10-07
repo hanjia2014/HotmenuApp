@@ -8,6 +8,6 @@
         createOrder: () => void;
         deleteOrder: () => void;
         submitOrder: (order: HotmenuApp.Models.Order) => boolean;
-        updateOrder: (id: number, order: HotmenuApp.Models.Order) => boolean;
+        updateOrder: (id: string, order: HotmenuApp.Models.Order) => boolean;
     }
 }

@@ -82,8 +82,8 @@
             return false;
         };
 
-        updateOrder = (id: number, order: Models.Order) => {
-            this.$http.put('/api/order', { id, order }).success(
+        updateOrder = (id: string, order: Models.Order) => {
+            this.$http.put('/api/order/' + id, order).success(
                 (result: any) => {
                     return true;
                 })

@@ -27,6 +27,7 @@ var HotmenuApp;
                 };
                 this.StatusChanged = function (order) {
                     var isdirty = order.Status;
+                    _this.menuService.updateOrder(order.Id, order);
                 };
                 this.menuService.getOrdersPromise().then(function (result) {
                     _this.$scope.Orders = result.data;

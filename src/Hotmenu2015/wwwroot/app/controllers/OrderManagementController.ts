@@ -28,6 +28,7 @@
 
         StatusChanged = (order: Models.Order) => {
             var isdirty = order.Status;
+            this.menuService.updateOrder(order.Id, order);
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderManagementController", OrderManagementController);

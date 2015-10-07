@@ -85,6 +85,7 @@ namespace HotmenuApp.Areas.Admin.Controllers
             if (items.Count > 0)
             {
                 _db.OrderItems.RemoveRange(items);
+                _db.SaveChanges();
             }
 
             _db.OrderItems.AddRange(order.Items);
