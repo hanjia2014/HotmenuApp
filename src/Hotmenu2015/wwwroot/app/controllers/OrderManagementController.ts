@@ -14,6 +14,8 @@
                     this.$scope.Orders.push(order);
                 });
             };
+
+            this.$scope.StatusOptions = ["Submitted", "InProgress", "Completed"];
         }
 
         SetSelectedOrder = (id: string) => {

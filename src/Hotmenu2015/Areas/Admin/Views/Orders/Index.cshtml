@@ -27,13 +27,20 @@
                         <tbody>
 
                             <tr data-ng-repeat="order in Orders | orderBy:'-Time'">
-                                    <td> {{order.Time}} </td>
-                                    <td> {{order.TableNo}} </td>
-                                    <td> {{order.Status}} </td>
-                                    <td class="td-actions">
-                                        <a href="javascript:" class="btn btn-primary btn-small" data-toggle="modal" data-target="#orderDetailsDialog" data-ng-click="OrderManagementController.SetSelectedOrder(order.Id)">View</a>
-                                    </td>
-                                </tr>
+                                <td> {{order.Time}} </td>
+                                <td> {{order.TableNo}} </td>
+                                <td>
+                                     <select data-ng-model="order.Status" data-ng-options="status for status in StatusOptions">
+                                        @*<option value="Submitted">Submitted</option>
+                                        <option value="InProgress">In Progress</option>
+                                        <option value="Completed">Completed</option>*@
+                                    </select>
+                                    <a class="btn btn-warning">Change</a>
+                                </td>
+                                <td class="td-actions">
+                                    <a href="javascript:" class="btn btn-primary btn-small" data-toggle="modal" data-target="#orderDetailsDialog" data-ng-click="OrderManagementController.SetSelectedOrder(order.Id)">View</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

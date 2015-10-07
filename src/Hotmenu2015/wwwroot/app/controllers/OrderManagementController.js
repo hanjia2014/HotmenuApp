@@ -33,6 +33,7 @@ var HotmenuApp;
                         _this.$scope.Orders.push(order);
                     });
                 };
+                this.$scope.StatusOptions = ["Submitted", "InProgress", "Completed"];
             }
             OrderManagementController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
             return OrderManagementController;
