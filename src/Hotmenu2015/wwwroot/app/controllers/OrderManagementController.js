@@ -25,6 +25,9 @@ var HotmenuApp;
                             _this.$scope.SelectedOrder = order;
                     }
                 };
+                this.StatusChanged = function (order) {
+                    var isdirty = order.Status;
+                };
                 this.menuService.getOrdersPromise().then(function (result) {
                     _this.$scope.Orders = result.data;
                 });
@@ -33,7 +36,7 @@ var HotmenuApp;
                         _this.$scope.Orders.push(order);
                     });
                 };
-                this.$scope.StatusOptions = [{ Text: "Submitted", Value: "Submitted" }, { Text: "In Progress", Value: "InProgress" }, { Text: "Completed", Value: "Completed" }];
+                this.$scope.StatusOptions = [{ Text: "Submitted", Value: "Submitted", HasChanged: false }, { Text: "In Progress", Value: "InProgress", HasChanged: false }, { Text: "Completed", Value: "Completed", HasChanged: false }];
             }
             OrderManagementController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
             return OrderManagementController;

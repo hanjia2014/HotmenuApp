@@ -29,5 +29,6 @@
     export class OrderStatusOption {
         public Text: string;
         public Value: string;
+        public HasChanged: boolean;
     }
 }

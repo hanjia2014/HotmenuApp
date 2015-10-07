@@ -30,7 +30,7 @@
                                 <td> {{order.Time}} </td>
                                 <td> {{order.TableNo}} </td>
                                 <td>
-                                    <select data-ng-model="order.Status" data-ng-change="alert(order.Status)" data-ng-options="status.Value as status.Text for status in StatusOptions"></select>
+                                    <select data-ng-model="order.Status" data-ng-change="OrderManagementController.StatusChanged(order)" data-ng-options="status.Value as status.Text for status in StatusOptions"></select>
                                     <a class="btn btn-warning">Change</a>
                                 </td>
                                 <td class="td-actions">

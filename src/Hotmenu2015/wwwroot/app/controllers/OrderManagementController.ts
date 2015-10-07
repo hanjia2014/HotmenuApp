@@ -15,7 +15,7 @@
                 });
             };
 
-            this.$scope.StatusOptions = [{ Text: "Submitted", Value: "Submitted" }, { Text: "In Progress", Value: "InProgress" }, { Text: "Completed", Value: "Completed" }];
+            this.$scope.StatusOptions = [{ Text: "Submitted", Value: "Submitted", HasChanged: false }, { Text: "In Progress", Value: "InProgress", HasChanged: false }, { Text: "Completed", Value: "Completed", HasChanged: false }];
         }
 
         SetSelectedOrder = (id: string) => {
@@ -24,7 +24,11 @@
                 if (order.Id == id)
                     this.$scope.SelectedOrder = order;
             }
-        }
+        };
+
+        StatusChanged = (order: Models.Order) => {
+            var isdirty = order.Status;
+        };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderManagementController", OrderManagementController);
 }
