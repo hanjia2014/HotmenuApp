@@ -27,5 +27,11 @@ var HotmenuApp;
             return OrderStatus;
         })();
         Models.OrderStatus = OrderStatus;
+        var OrderStatusOption = (function () {
+            function OrderStatusOption() {
+            }
+            return OrderStatusOption;
+        })();
+        Models.OrderStatusOption = OrderStatusOption;
     })(Models = HotmenuApp.Models || (HotmenuApp.Models = {}));
 })(HotmenuApp || (HotmenuApp = {}));

@@ -27,6 +27,6 @@
     export interface IOrderManagementScope extends IBaseScope {
         Orders: Array<Models.Order>;
         SelectedOrder: Models.Order;
-        StatusOptions: Array<string>;
+        StatusOptions: Array<Models.OrderStatusOption>;
     }
 }

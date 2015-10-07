@@ -25,4 +25,9 @@
         public static InProgress: string = "InProgress";
         public static Completed: string = "Completed";
     }
+
+    export class OrderStatusOption {
+        public Text: string;
+        public Value: string;
+    }
 }

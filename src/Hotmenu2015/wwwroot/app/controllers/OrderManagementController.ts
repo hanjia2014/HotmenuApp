@@ -15,7 +15,7 @@
                 });
             };
 
-            this.$scope.StatusOptions = ["Submitted", "InProgress", "Completed"];
+            this.$scope.StatusOptions = [{ Text: "Submitted", Value: "Submitted" }, { Text: "In Progress", Value: "InProgress" }, { Text: "Completed", Value: "Completed" }];
         }
 
         SetSelectedOrder = (id: string) => {

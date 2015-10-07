@@ -30,11 +30,7 @@
                                 <td> {{order.Time}} </td>
                                 <td> {{order.TableNo}} </td>
                                 <td>
-                                     <select data-ng-model="order.Status" data-ng-options="status for status in StatusOptions">
-                                        @*<option value="Submitted">Submitted</option>
-                                        <option value="InProgress">In Progress</option>
-                                        <option value="Completed">Completed</option>*@
-                                    </select>
+                                    <select data-ng-model="order.Status" data-ng-options="status.Value as status.Text for status in StatusOptions"></select>
                                     <a class="btn btn-warning">Change</a>
                                 </td>
                                 <td class="td-actions">
