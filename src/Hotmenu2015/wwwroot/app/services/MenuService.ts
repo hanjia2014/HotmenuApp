@@ -80,7 +80,20 @@
                 });
 
             return false;
-        }
+        };
+
+        updateOrder = (id: number, order: Models.Order) => {
+            this.$http.put('/api/order', { id, order }).success(
+                (result: any) => {
+                    return true;
+                })
+                .error(
+                (result: any) => {
+                    return false;
+                });
+
+            return false;
+        };
     }
 
     angular.module("hotmenuApp").service("HotmenuApp.Services.MenuService", MenuService);

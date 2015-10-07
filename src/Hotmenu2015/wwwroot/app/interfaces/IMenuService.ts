@@ -7,6 +7,7 @@
         setCurrentOrder: (currentOrder: HotmenuApp.Models.Order) => void;
         createOrder: () => void;
         deleteOrder: () => void;
-        submitOrder: (order : HotmenuApp.Models.Order) => boolean;
+        submitOrder: (order: HotmenuApp.Models.Order) => boolean;
+        updateOrder: (id: number, order: HotmenuApp.Models.Order) => boolean;
     }
 }

@@ -33,6 +33,15 @@ var HotmenuApp;
                     });
                     return false;
                 };
+                this.updateOrder = function (id, order) {
+                    _this.$http.put('/api/order', { id: id, order: order }).success(function (result) {
+                        return true;
+                    })
+                        .error(function (result) {
+                        return false;
+                    });
+                    return false;
+                };
                 this.server = $location.host() + '/' + $location.port();
                 //this.currentOrder = new HotmenuApp.Models.Order();
             }
