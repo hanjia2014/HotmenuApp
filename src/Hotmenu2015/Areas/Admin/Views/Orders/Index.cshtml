@@ -27,7 +27,7 @@
                         <tbody>
 
                             <tr data-ng-repeat="order in Orders | orderBy:'-Time'">
-                                <td> {{order.Time}} </td>
+                                <td> {{order.Time | date:'yyyy-MM-dd HH:mm:ss'}} </td>
                                 <td> {{order.TableNo}} </td>
                                 <td>
                                     <select data-ng-model="order.Status" data-ng-change="OrderManagementController.StatusChanged(order)" data-ng-options="status.Value as status.Text for status in StatusOptions"></select>
@@ -72,7 +72,7 @@
                                         <tbody>
 
                                             <tr data-ng-repeat="item in SelectedOrder.Items | orderBy:'Name'">
-                                                <td> {{SelectedOrder.Time}} </td>
+                                                <td> {{SelectedOrder.Time | date:'yyyy-MM-dd HH:mm:ss'}} </td>
                                                 <td> {{SelectedOrder.TableNo}} </td>
                                                 <td> {{item.ClientName}} </td>
                                                 <td> {{item.MenuItemName}} </td>
