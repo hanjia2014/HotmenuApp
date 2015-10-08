@@ -91,6 +91,8 @@ namespace HotmenuApp.Areas.Admin.Controllers
             _db.OrderItems.AddRange(order.Items);
             _db.SaveChanges();
 
+            _db.Update(order);
+            _db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }
