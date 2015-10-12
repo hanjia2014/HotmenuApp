@@ -29,6 +29,20 @@ var HotmenuApp;
                     var isdirty = order.Status;
                     _this.menuService.updateOrder(order.Id, order);
                 };
+                this.printOrder = function (divID) {
+                    //Get the HTML of div
+                    var divElements = document.getElementById(divID).innerHTML;
+                    //Get the HTML of whole page
+                    var oldPage = document.body.innerHTML;
+                    //Reset the page's HTML with div's HTML only
+                    document.body.innerHTML =
+                        "<html><head><title></title></head><body>" +
+                            divElements + "</body>";
+                    //Print Page
+                    window.print();
+                    //Restore orignal HTML
+                    document.body.innerHTML = oldPage;
+                };
                 this.menuService.getOrdersPromise().then(function (result) {
                     _this.$scope.Orders = result.data;
                 });
