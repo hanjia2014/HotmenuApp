@@ -65,7 +65,7 @@
 
                                         <div class="plan-actions">
                                             <a href="javascript:;" class="btn" data-ng-click="orderController.AddOrderItem($index, clientName)">Add Item</a>
-                                            <a href="javascript:;" class="btn" data-toggle="modal" data-target="#menuDialog">pop up</a>
+                                            <a href="javascript:;" class="btn" data-ng-click="orderController.SelectCurrentClientName($index, clientName)" data-toggle="modal" data-target="#menuDialog">pop up</a>
                                         </div> <!-- /plan-actions -->
 
                                     </div> <!-- /plan -->
@@ -119,8 +119,8 @@
         </div>
     </div>
 
-    <div class="modal fade" role="dialog" id="menuDialog" data-ng-controller="HotmenuApp.Controllers.MenuController as menuController">
-        <div class="modal-dialog">
+    <div class="modal fade" role="dialog" id="menuDialog" style="width:80%; margin-left:-40%" data-ng-controller="HotmenuApp.Controllers.MenuOperateController as menuController">
+        <div class="modal-dialog" style="height:80%">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -180,9 +180,6 @@
                         </div>
                         <!-- /row -->
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-default" data-ng-click="orderController.deleteOrder()" data-dismiss="modal">Yes</a><a class="btn btn-default pull-right" data-dismiss="modal">No</a>
                 </div>
             </div>
         </div>

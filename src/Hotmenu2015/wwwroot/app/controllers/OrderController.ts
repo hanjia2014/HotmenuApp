@@ -59,6 +59,10 @@
             this.$window.location.href = '/home/menu' + '?clientNameIndex=' + index + '&clientName=' + clientName;
         };
 
+        SelectCurrentClientName = (index: number, clientName: string) => {
+            this.$scope.$broadcast('OnRefreshList', { client: clientName});
+        };
+
         private saveCurrentOrder = () => {
             this.menuService.setCurrentOrder(this.currentOrder);
         };

@@ -45,6 +45,9 @@ var HotmenuApp;
                 this.AddOrderItem = function (index, clientName) {
                     _this.$window.location.href = '/home/menu' + '?clientNameIndex=' + index + '&clientName=' + clientName;
                 };
+                this.SelectCurrentClientName = function (index, clientName) {
+                    _this.$scope.$broadcast('OnRefreshList', { client: clientName });
+                };
                 this.saveCurrentOrder = function () {
                     _this.menuService.setCurrentOrder(_this.currentOrder);
                 };
