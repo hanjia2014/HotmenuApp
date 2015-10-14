@@ -58,3 +58,4 @@
 /// <reference path="Scripts/template/guidely/guidely.min.js" />
 /// <reference path="Scripts/template/jquery-1.7.2.min.js" />
 /// <reference path="Scripts/template/signin.js" />
+/// <reference path="Scripts/ui-bootstrap-tpls-0.14.2.js" />

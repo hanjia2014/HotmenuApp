@@ -65,6 +65,7 @@
 
                                         <div class="plan-actions">
                                             <a href="javascript:;" class="btn" data-ng-click="orderController.AddOrderItem($index, clientName)">Add Item</a>
+                                            <a href="javascript:;" class="btn" data-toggle="modal" data-target="#menuDialog">pop up</a>
                                         </div> <!-- /plan-actions -->
 
                                     </div> <!-- /plan -->
@@ -113,6 +114,75 @@
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-default" data-ng-click="orderController.createClientName(NewClientName)" data-dismiss="modal">Ok</a><a class="btn btn-default pull-right" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" id="menuDialog" data-ng-controller="HotmenuApp.Controllers.MenuController as menuController">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Menu</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <div class="widget">
+                                    <div class="widget-header">
+                                        <i class="icon-bookmark"></i>
+                                        <h3>Category</h3>
+                                    </div>
+                                    <!-- /widget-header -->
+                                    <div class="widget-content">
+                                        <div class="shortcuts">
+                                            <a href="javascript:;" class="shortcut" data-ng-repeat="category in Categories | orderBy:'Id'" data-ng-click="menuController.selectedCategory = category">
+                                                <span class="shortcut-label">{{category.Name}}</span>
+                                            </a>
+                                        </div>
+                                        <!-- /shortcuts -->
+                                    </div>
+                                    <!-- /widget-content -->
+                                </div>
+                                <!-- /widget -->
+                                <div class="widget widget-nopad">
+                                    <div class="widget-header">
+                                        <i class="icon-list-alt"></i>
+                                        <h3> Menu</h3>
+                                        <a data-ng-if="menuController.hasCurrentOrder()" href="/home/order" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()">Add To Order</a>
+                                    </div>
+                                    <!-- /widget-header -->
+                                    <div class="widget-content">
+                                        <ul class="news-items">
+                                            <li style="width:96%" data-ng-repeat="item in MenuItems" data-ng-show="menuController.selectedCategory == null ||menuController.selectedCategory.Id == 0 || item.CategoryId == menuController.selectedCategory.Id">
+                                                <div class="news-item-date">
+                                                    <a href="javascript:;" data-ng-class="item.Selected ? 'btn btn-success btn-small' : 'btn btn-danger btn-small'" data-ng-click="item.Selected = !item.Selected;">
+                                                        <i data-ng-class="item.Selected ? 'btn-icon-only icon-ok' : 'btn-icon-only icon-remove'"> </i>
+                                                    </a>
+                                                </div>
+                                                <div class="news-item-detail">
+                                                    <a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title" target="_blank">{{item.Name}}</a>
+                                                    <p class="news-item-preview"> {{item.Description}} </p>
+                                                </div>
+                                                <div class="news-item-date">
+                                                    <span class="shortcut-label">{{item.Price | currency}}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- /widget-content -->
+                                </div>
+                                <!-- /widget -->
+                            </div>
+                            <!-- /span6 -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-ng-click="orderController.deleteOrder()" data-dismiss="modal">Yes</a><a class="btn btn-default pull-right" data-dismiss="modal">No</a>
                 </div>
             </div>
         </div>
