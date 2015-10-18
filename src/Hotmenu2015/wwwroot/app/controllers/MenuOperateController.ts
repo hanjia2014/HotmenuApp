@@ -67,6 +67,8 @@
                 }
             });
             this.menuService.setCurrentOrder(this.currentOrder);
+
+            var orderScope = <HotmenuApp.Scopes.IOrderScope>this.$scope.$parent;
         };
 
         addToOrderWithClientName = (newClientName: string) => {

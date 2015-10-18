@@ -40,6 +40,7 @@ var HotmenuApp;
                         }
                     });
                     _this.menuService.setCurrentOrder(_this.currentOrder);
+                    var orderScope = _this.$scope.$parent;
                 };
                 this.addToOrderWithClientName = function (newClientName) {
                     if (_this.newClientNameFlag) {
