@@ -41,6 +41,7 @@ var HotmenuApp;
                     });
                     _this.menuService.setCurrentOrder(_this.currentOrder);
                     var orderScope = _this.$scope.$parent;
+                    orderScope.CurrentOrder = _this.currentOrder;
                 };
                 this.addToOrderWithClientName = function (newClientName) {
                     if (_this.newClientNameFlag) {
@@ -70,6 +71,7 @@ var HotmenuApp;
                 };
                 this.$scope.$on('OnRefreshList', function (event, obj) {
                     _this.selectedClientName = obj.client;
+                    _this.currentOrder = _this.menuService.getCurrentOrder();
                     if (_this.currentOrder.Items != null && _this.selectedClientName != '') {
                         for (var i = 0; i < _this.$scope.MenuItems.length; i++) {
                             var item = _this.$scope.MenuItems[i];

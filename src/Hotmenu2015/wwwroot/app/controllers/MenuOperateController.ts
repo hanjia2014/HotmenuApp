@@ -29,6 +29,7 @@
 
             this.$scope.$on('OnRefreshList', (event, obj) => {
                 this.selectedClientName = obj.client;
+                this.currentOrder = this.menuService.getCurrentOrder();
                 if (this.currentOrder.Items != null && this.selectedClientName != '') {
                     for (var i = 0; i < this.$scope.MenuItems.length; i++) {
                         var item = this.$scope.MenuItems[i];
@@ -73,6 +74,7 @@
             this.menuService.setCurrentOrder(this.currentOrder);
 
             var orderScope = <HotmenuApp.Scopes.IOrderScope>this.$scope.$parent;
+            orderScope.CurrentOrder = this.currentOrder;
         };
 
         addToOrderWithClientName = (newClientName: string) => {
