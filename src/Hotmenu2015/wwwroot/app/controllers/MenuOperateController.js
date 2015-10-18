@@ -71,6 +71,10 @@ var HotmenuApp;
                 this.$scope.$on('OnRefreshList', function (event, obj) {
                     _this.selectedClientName = obj.client;
                     if (_this.currentOrder.Items != null && _this.selectedClientName != '') {
+                        for (var i = 0; i < _this.$scope.MenuItems.length; i++) {
+                            var item = _this.$scope.MenuItems[i];
+                            item.Selected = false;
+                        }
                         for (var index = 0; index < _this.currentOrder.Items.length; index++) {
                             var currentOrderMenuItem = _this.currentOrder.Items[index];
                             if (currentOrderMenuItem.ClientName == _this.selectedClientName) {

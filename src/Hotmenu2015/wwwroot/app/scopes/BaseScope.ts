@@ -17,7 +17,7 @@
     }
 
     export interface IOrderScope extends IBaseScope {
-        Order: Models.Order;
+        CurrentOrder: Models.Order;
         Orders: Array<Models.Order>;
         NewClientName: string;
         TableNo: number;

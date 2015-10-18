@@ -21,7 +21,7 @@ var HotmenuApp;
                 this.createOrder = function () {
                     _this.menuService.createOrder();
                     _this.showOrderDiv = true;
-                    _this.currentOrder = _this.menuService.getCurrentOrder();
+                    _this.$scope.CurrentOrder = _this.menuService.getCurrentOrder();
                     localStorage.setItem("showOrderDiv", JSON.stringify(_this.showOrderDiv));
                 };
                 this.deleteOrder = function () {
@@ -29,17 +29,17 @@ var HotmenuApp;
                     localStorage.clear();
                 };
                 this.createClientName = function (clientName) {
-                    _this.currentOrder.ClientNames.push(clientName);
+                    _this.$scope.CurrentOrder.ClientNames.push(clientName);
                     _this.saveCurrentOrder();
                 };
                 this.removeClientName = function (index, clientName, removeItems) {
-                    for (var i = 0; i < _this.currentOrder.Items.length; i++) {
-                        var item = _this.currentOrder.Items[i];
+                    for (var i = 0; i < _this.$scope.CurrentOrder.Items.length; i++) {
+                        var item = _this.$scope.CurrentOrder.Items[i];
                         if (item.ClientName == clientName) {
-                            _this.currentOrder.Items.splice(i, 1);
+                            _this.$scope.CurrentOrder.Items.splice(i, 1);
                         }
                     }
-                    _this.currentOrder.ClientNames.splice(index, 1);
+                    _this.$scope.CurrentOrder.ClientNames.splice(index, 1);
                     _this.saveCurrentOrder();
                 };
                 this.AddOrderItem = function (index, clientName) {
@@ -49,30 +49,30 @@ var HotmenuApp;
                     _this.$scope.$broadcast('OnRefreshList', { client: clientName });
                 };
                 this.saveCurrentOrder = function () {
-                    _this.menuService.setCurrentOrder(_this.currentOrder);
+                    _this.menuService.setCurrentOrder(_this.$scope.CurrentOrder);
                 };
                 this.deleteMenuItem = function (item) {
-                    _this.currentOrder = _this.menuService.getCurrentOrder();
-                    for (var i = 0; i < _this.currentOrder.Items.length; i++) {
-                        var next = _this.currentOrder.Items[i];
+                    _this.$scope.CurrentOrder = _this.menuService.getCurrentOrder();
+                    for (var i = 0; i < _this.$scope.CurrentOrder.Items.length; i++) {
+                        var next = _this.$scope.CurrentOrder.Items[i];
                         if (next.MenuItemId == item.MenuItemId && next.MenuItemName == item.MenuItemName) {
-                            _this.currentOrder.Items.splice(i, 1);
+                            _this.$scope.CurrentOrder.Items.splice(i, 1);
                         }
                     }
-                    _this.menuService.setCurrentOrder(_this.currentOrder);
+                    _this.menuService.setCurrentOrder(_this.$scope.CurrentOrder);
                 };
                 this.TotalByClientName = function (clientName) {
                     var sum = 0;
-                    _this.currentOrder.Items.forEach(function (item, index) {
+                    _this.$scope.CurrentOrder.Items.forEach(function (item, index) {
                         if (item.ClientName == clientName)
                             sum = sum + item.Price;
                     });
                     return sum;
                 };
                 this.Submit = function () {
-                    _this.currentOrder = _this.menuService.getCurrentOrder();
-                    _this.currentOrder.TableNo = _this.$scope.TableNo;
-                    _this.currentOrder.Status = HotmenuApp.Models.OrderStatus.Submitted;
+                    _this.$scope.CurrentOrder = _this.menuService.getCurrentOrder();
+                    _this.$scope.CurrentOrder.TableNo = _this.$scope.TableNo;
+                    _this.$scope.CurrentOrder.Status = HotmenuApp.Models.OrderStatus.Submitted;
                     var datetime = new Date();
                     var year = datetime.getFullYear();
                     var month = datetime.getMonth() + 1;
@@ -80,8 +80,8 @@ var HotmenuApp;
                     var hour = datetime.getHours();
                     var minutes = datetime.getMinutes();
                     var seconds = datetime.getSeconds();
-                    _this.currentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
-                    var result = _this.menuService.submitOrder(_this.currentOrder);
+                    _this.$scope.CurrentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
+                    var result = _this.menuService.submitOrder(_this.$scope.CurrentOrder);
                     //this.orderHub.server.submitOrder(this.currentOrder);
                 };
                 this.$q.all([this.menuService.getCategoryPromise().then(function (result) {
@@ -93,11 +93,12 @@ var HotmenuApp;
                 ]);
                 if (localStorage.getItem("showOrderDiv") != null)
                     this.showOrderDiv = localStorage.getItem("showOrderDiv");
-                this.currentOrder = this.menuService.getCurrentOrder();
+                this.$scope.CurrentOrder = this.menuService.getCurrentOrder();
                 this.orderHub.client.updateOrderProcessStatus = function (order) {
                     alert("The order has been submitted");
                 };
             }
+            //public currentOrder: HotmenuApp.Models.Order;
             OrderController.$inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
             return OrderController;
         })(Controllers.BaseController);

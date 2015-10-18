@@ -30,6 +30,10 @@
             this.$scope.$on('OnRefreshList', (event, obj) => {
                 this.selectedClientName = obj.client;
                 if (this.currentOrder.Items != null && this.selectedClientName != '') {
+                    for (var i = 0; i < this.$scope.MenuItems.length; i++) {
+                        var item = this.$scope.MenuItems[i];
+                        item.Selected = false;
+                    }
                     for (var index = 0; index < this.currentOrder.Items.length; index++) {
                         var currentOrderMenuItem = this.currentOrder.Items[index];
                         if (currentOrderMenuItem.ClientName == this.selectedClientName) {

@@ -1,7 +1,7 @@
 ﻿module HotmenuApp.Controllers {
     export class OrderController extends BaseController{
         public showOrderDiv: boolean;
-        public currentOrder: HotmenuApp.Models.Order;
+        //public currentOrder: HotmenuApp.Models.Order;
         static $inject = ['$scope', '$location', 'HotmenuApp.Services.MenuService', '$q', '$window', 'orderHub'];
         constructor(private $scope: HotmenuApp.Scopes.IOrderScope, private $location: ng.ILocationService, private menuService: HotmenuApp.Interfaces.IMenuService, private $q: ng.IQService, private $window: ng.IWindowService, private orderHub) {
             super();
@@ -16,7 +16,7 @@
             if (localStorage.getItem("showOrderDiv") != null)
                 this.showOrderDiv = localStorage.getItem("showOrderDiv");
 
-            this.currentOrder = this.menuService.getCurrentOrder();
+            this.$scope.CurrentOrder = this.menuService.getCurrentOrder();
 
 
 
@@ -28,7 +28,7 @@
         createOrder = () => {
             this.menuService.createOrder();
             this.showOrderDiv = true;
-            this.currentOrder = this.menuService.getCurrentOrder();
+            this.$scope.CurrentOrder = this.menuService.getCurrentOrder();
             localStorage.setItem("showOrderDiv", JSON.stringify(this.showOrderDiv));
         };
 
@@ -38,20 +38,20 @@
         };
 
         createClientName = (clientName: string) => {
-            this.currentOrder.ClientNames.push(clientName);
+            this.$scope.CurrentOrder.ClientNames.push(clientName);
             this.saveCurrentOrder();
         };
 
         removeClientName = (index: number, clientName: string, removeItems: boolean) => {
 
-            for (var i = 0; i < this.currentOrder.Items.length; i++) {
-                var item = this.currentOrder.Items[i];
+            for (var i = 0; i < this.$scope.CurrentOrder.Items.length; i++) {
+                var item = this.$scope.CurrentOrder.Items[i];
                 if (item.ClientName == clientName) {
-                    this.currentOrder.Items.splice(i, 1);
+                    this.$scope.CurrentOrder.Items.splice(i, 1);
                 }
             }
 
-            this.currentOrder.ClientNames.splice(index, 1);
+            this.$scope.CurrentOrder.ClientNames.splice(index, 1);
             this.saveCurrentOrder();
         };
 
@@ -64,25 +64,25 @@
         };
 
         private saveCurrentOrder = () => {
-            this.menuService.setCurrentOrder(this.currentOrder);
+            this.menuService.setCurrentOrder(this.$scope.CurrentOrder);
         };
 
         deleteMenuItem = (item: Models.OrderItem) => {
-            this.currentOrder = this.menuService.getCurrentOrder();
+            this.$scope.CurrentOrder = this.menuService.getCurrentOrder();
 
-            for (var i = 0; i < this.currentOrder.Items.length; i++) {
-                var next = this.currentOrder.Items[i];
+            for (var i = 0; i < this.$scope.CurrentOrder.Items.length; i++) {
+                var next = this.$scope.CurrentOrder.Items[i];
                 if (next.MenuItemId == item.MenuItemId && next.MenuItemName == item.MenuItemName) {
-                    this.currentOrder.Items.splice(i, 1);
+                    this.$scope.CurrentOrder.Items.splice(i, 1);
                 }
             }
 
-            this.menuService.setCurrentOrder(this.currentOrder);
+            this.menuService.setCurrentOrder(this.$scope.CurrentOrder);
         };
 
         TotalByClientName = (clientName: string) => {
             var sum: number = 0;
-            this.currentOrder.Items.forEach((item, index) => {
+            this.$scope.CurrentOrder.Items.forEach((item, index) => {
                 if (item.ClientName == clientName)
                     sum = sum + item.Price;
             });
@@ -90,9 +90,9 @@
         };
 
         Submit = () => {
-            this.currentOrder = this.menuService.getCurrentOrder();
-            this.currentOrder.TableNo = this.$scope.TableNo;
-            this.currentOrder.Status = Models.OrderStatus.Submitted;
+            this.$scope.CurrentOrder = this.menuService.getCurrentOrder();
+            this.$scope.CurrentOrder.TableNo = this.$scope.TableNo;
+            this.$scope.CurrentOrder.Status = Models.OrderStatus.Submitted;
             var datetime = new Date();
             var year = datetime.getFullYear();
             var month = datetime.getMonth() + 1;
@@ -101,8 +101,8 @@
             var minutes = datetime.getMinutes();
             var seconds = datetime.getSeconds();
 
-            this.currentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
-            var result = this.menuService.submitOrder(this.currentOrder);
+            this.$scope.CurrentOrder.Time = year + '-' + month + '-' + date + ' ' + hour + ':' + minutes + ':' + seconds;
+            var result = this.menuService.submitOrder(this.$scope.CurrentOrder);
 
             //this.orderHub.server.submitOrder(this.currentOrder);
         };
