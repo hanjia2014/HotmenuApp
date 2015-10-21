@@ -1,3 +1,4 @@
+var app = angular.module('hotmenuApp');
 function printDirective() {
     var printSection = document.getElementById('printSection');
     // if there is no printing section, create one
@@ -29,4 +30,19 @@ function printDirective() {
         restrict: 'A'
     };
 }
-angular.module('hotmenuApp').directive('ngPrint', [printDirective]);
+app.directive('ngPrint', [printDirective]);
+app.directive('calendar', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, el, attr, ngModel) {
+            $(el).datepicker({
+                dateFormat: 'yy-mm-dd',
+                onSelect: function (dateText) {
+                    scope.$apply(function () {
+                        ngModel.$setViewValue(dateText);
+                    });
+                }
+            });
+        }
+    };
+});

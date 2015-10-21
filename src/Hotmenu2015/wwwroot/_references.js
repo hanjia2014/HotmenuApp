@@ -26,6 +26,7 @@
 /// <reference path="Scripts/angular.js" />
 /// <reference path="Scripts/angular-animate.js" />
 /// <reference path="Scripts/angular-aria.js" />
+/// <reference path="scripts/angular-bootstrap-datepicker.js" />
 /// <reference path="Scripts/angular-cookies.js" />
 /// <reference path="Scripts/angular-loader.js" />
 /// <reference path="Scripts/angular-message-format.js" />
