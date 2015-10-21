@@ -39,7 +39,7 @@ function printDirective() {
 
 app.directive('ngPrint', [printDirective]);
 
-app.directive('calendar', function () {
+app.directive('calendar', () => {
     return {
         require: 'ngModel',
         link: function (scope, el, attr, ngModel) {
