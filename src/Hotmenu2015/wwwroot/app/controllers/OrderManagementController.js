@@ -29,6 +29,13 @@ var HotmenuApp;
                     var isdirty = order.Status;
                     _this.menuService.updateOrder(order.Id, order);
                 };
+                this.ViewOrderList = function () {
+                    var startDate = _this.$scope.OrderListViewStartDate;
+                };
+                this.$scope.DatepickerOptions = {
+                    autoclose: true,
+                    weekStart: 0
+                };
                 this.menuService.getOrdersPromise().then(function (result) {
                     _this.$scope.Orders = result.data;
                 });

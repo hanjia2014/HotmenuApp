@@ -5,7 +5,7 @@ var HotmenuApp;
         $.connection.hub.logging = true;
         $.connection.hub.start();
     });
-    var app = angular.module("hotmenuApp", ['ngRoute']);
+    var app = angular.module("hotmenuApp", ['ngRoute', 'ng-bootstrap-datepicker']);
     app.value("orderHub", orderHub);
     app.config(HotmenuApp.Routes.configureRoutes);
 })(HotmenuApp || (HotmenuApp = {}));

@@ -28,5 +28,7 @@
         Orders: Array<Models.Order>;
         SelectedOrder: Models.Order;
         StatusOptions: Array<Models.OrderStatusOption>;
+        DatepickerOptions: any;
+        OrderListViewStartDate: Date;
     }
 }
