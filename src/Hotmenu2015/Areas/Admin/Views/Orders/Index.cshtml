@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
 
-                            <tr data-ng-repeat="order in Orders | orderBy:'-Time'">
+                            <tr data-ng-repeat="order in Orders | orderBy:'-Time' | dateFilter:OrderListViewStartDate:OrderListViewStartDate">
                                 <td> {{order.Time | date:'yyyy-MM-dd HH:mm:ss'}} </td>
                                 <td> {{order.TableNo}} </td>
                                 <td>
