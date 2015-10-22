@@ -46,3 +46,41 @@ app.directive('calendar', function () {
         }
     };
 });
+app.filter('dateFilter', function () {
+    return function (orders, startDate, endDate) {
+        var tempOrders = new Array();
+        if (startDate == null && endDate == null)
+            return orders;
+        if (endDate == null) {
+            for (var i = 0; i < orders.length; i++) {
+                var order = orders[i];
+                var orderDateTime = new Date(order.Time);
+                if (orderDateTime <= endDate) {
+                    tempOrders.push(order);
+                }
+            }
+            return tempOrders;
+        }
+        if (startDate == null) {
+            for (var i = 0; i < orders.length; i++) {
+                var order = orders[i];
+                var orderDateTime = new Date(order.Time);
+                if (orderDateTime >= startDate) {
+                    tempOrders.push(order);
+                }
+            }
+            return tempOrders;
+        }
+        if (startDate != null && endDate != null) {
+            for (var i = 0; i < orders.length; i++) {
+                var order = orders[i];
+                var orderDateTime = new Date(order.Time);
+                if (orderDateTime && orderDateTime >= startDate) {
+                    tempOrders.push(order);
+                }
+            }
+            return tempOrders;
+        }
+        return orders;
+    };
+});

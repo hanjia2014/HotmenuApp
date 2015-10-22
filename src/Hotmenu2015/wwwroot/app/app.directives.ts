@@ -54,3 +54,42 @@ app.directive('calendar', () => {
         }
     };
 })
+
+app.filter('dateFilter', () => {
+    return (orders: Array<HotmenuApp.Models.Order>, startDate: Date, endDate: Date) => {
+        var tempOrders = new Array<HotmenuApp.Models.Order>();
+        if (startDate == null && endDate == null)
+            return orders;
+        if (endDate == null) {
+            for (var i = 0; i < orders.length; i++) {
+                var order = orders[i];
+                var orderDateTime = new Date(order.Time);
+                if (orderDateTime <= endDate) {
+                    tempOrders.push(order);
+                }
+            }
+            return tempOrders;
+        }
+        if (startDate == null) {
+            for (var i = 0; i < orders.length; i++) {
+                var order = orders[i];
+                var orderDateTime = new Date(order.Time);
+                if (orderDateTime >= startDate) {
+                    tempOrders.push(order);
+                }
+            }
+            return tempOrders;
+        }
+        if (startDate != null && endDate != null) {
+            for (var i = 0; i < orders.length; i++) {
+                var order = orders[i];
+                var orderDateTime = new Date(order.Time);
+                if (orderDateTime && orderDateTime >= startDate) {
+                    tempOrders.push(order);
+                }
+            }
+            return tempOrders;
+        }
+        return orders;
+    };
+});
