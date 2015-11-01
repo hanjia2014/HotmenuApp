@@ -13,6 +13,7 @@
                     <i class="icon-signal"></i>
                     <h3> Orders List</h3>
                     <input id="datepicker" type="text" data-ng-datepicker data-ng-options="DatepickerOptions" data-ng-model="OrderListViewStartDate">
+                    <input id="datepicker" type="text" data-ng-datepicker data-ng-options="DatepickerOptions" data-ng-model="OrderListViewEndDate">
                     <input class="btn btn-default" data-ng-click="OrderManagementController.ViewOrderList()" value="View" />
                 </div>
                 <!-- /widget-header -->
@@ -28,7 +29,7 @@
                         </thead>
                         <tbody>
 
-                            <tr data-ng-repeat="order in Orders | orderBy:'-Time' | dateFilter:OrderListViewStartDate:OrderListViewStartDate">
+                            <tr data-ng-repeat="order in Orders | orderBy:'-Time' | dateFilter:OrderListViewStartDate:OrderListViewEndDate">
                                 <td> {{order.Time | date:'yyyy-MM-dd HH:mm:ss'}} </td>
                                 <td> {{order.TableNo}} </td>
                                 <td>

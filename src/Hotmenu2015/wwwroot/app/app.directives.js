@@ -55,7 +55,7 @@ app.filter('dateFilter', function () {
             for (var i = 0; i < orders.length; i++) {
                 var order = orders[i];
                 var orderDateTime = new Date(order.Time);
-                if (orderDateTime <= endDate) {
+                if (orderDateTime <= new Date(endDate)) {
                     tempOrders.push(order);
                 }
             }
@@ -65,7 +65,7 @@ app.filter('dateFilter', function () {
             for (var i = 0; i < orders.length; i++) {
                 var order = orders[i];
                 var orderDateTime = new Date(order.Time);
-                if (orderDateTime >= startDate) {
+                if (orderDateTime >= new Date(startDate)) {
                     tempOrders.push(order);
                 }
             }
@@ -75,7 +75,9 @@ app.filter('dateFilter', function () {
             for (var i = 0; i < orders.length; i++) {
                 var order = orders[i];
                 var orderDateTime = new Date(order.Time);
-                if (orderDateTime && orderDateTime >= startDate) {
+                var filterStartDate = new Date(startDate);
+                var filterEndDate = new Date(endDate);
+                if (orderDateTime >= filterStartDate && orderDateTime <= filterEndDate) {
                     tempOrders.push(order);
                 }
             }

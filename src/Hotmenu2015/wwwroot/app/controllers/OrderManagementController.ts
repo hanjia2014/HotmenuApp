@@ -36,6 +36,7 @@
 
         ViewOrderList = () => {
             var startDate = this.$scope.OrderListViewStartDate;
+            var endDate = this.$scope.OrderListViewEndDate;
         };
     }
     angular.module("hotmenuApp").controller("HotmenuApp.Controllers.OrderManagementController", OrderManagementController);

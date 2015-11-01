@@ -31,6 +31,7 @@ var HotmenuApp;
                 };
                 this.ViewOrderList = function () {
                     var startDate = _this.$scope.OrderListViewStartDate;
+                    var endDate = _this.$scope.OrderListViewEndDate;
                 };
                 this.$scope.DatepickerOptions = {
                     autoclose: true,

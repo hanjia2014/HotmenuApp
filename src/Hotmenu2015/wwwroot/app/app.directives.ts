@@ -56,7 +56,7 @@ app.directive('calendar', () => {
 })
 
 app.filter('dateFilter', () => {
-    return (orders: Array<HotmenuApp.Models.Order>, startDate: Date, endDate: Date) => {
+    return (orders: Array<HotmenuApp.Models.Order>, startDate: string, endDate: string) => {
         var tempOrders = new Array<HotmenuApp.Models.Order>();
         if (startDate == null && endDate == null)
             return orders;
@@ -64,7 +64,7 @@ app.filter('dateFilter', () => {
             for (var i = 0; i < orders.length; i++) {
                 var order = orders[i];
                 var orderDateTime = new Date(order.Time);
-                if (orderDateTime <= endDate) {
+                if (orderDateTime <= new Date(endDate)) {
                     tempOrders.push(order);
                 }
             }
@@ -74,7 +74,7 @@ app.filter('dateFilter', () => {
             for (var i = 0; i < orders.length; i++) {
                 var order = orders[i];
                 var orderDateTime = new Date(order.Time);
-                if (orderDateTime >= startDate) {
+                if (orderDateTime >= new Date(startDate)) {
                     tempOrders.push(order);
                 }
             }
@@ -84,7 +84,9 @@ app.filter('dateFilter', () => {
             for (var i = 0; i < orders.length; i++) {
                 var order = orders[i];
                 var orderDateTime = new Date(order.Time);
-                if (orderDateTime && orderDateTime >= startDate) {
+                var filterStartDate = new Date(startDate);
+                var filterEndDate = new Date(endDate);
+                if (orderDateTime >= filterStartDate && orderDateTime <= filterEndDate) {
                     tempOrders.push(order);
                 }
             }

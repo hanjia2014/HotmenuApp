@@ -30,5 +30,6 @@
         StatusOptions: Array<Models.OrderStatusOption>;
         DatepickerOptions: any;
         OrderListViewStartDate: Date;
+        OrderListViewEndDate: Date;
     }
 }
