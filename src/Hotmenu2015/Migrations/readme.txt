@@ -3,6 +3,8 @@
 
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';$wc=New-Object System.Net.WebClient;$wc.Proxy=[System.Net.WebRequest]::DefaultWebProxy;$wc.Proxy.Credentials=[System.Net.CredentialCache]::DefaultNetworkCredentials;Invoke-Expression ($wc.DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
 
+from Datacom use "DNZWGPX2.datacom.co.nz:80" as proxy server
+
 3. go to the directory where contains the project.json file
 4. run command "dnu restore"
 5. run command "dnx . ef"
