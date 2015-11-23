@@ -3,7 +3,6 @@ using System.Linq;
 using HotmenuApp.Models;
 using Microsoft.AspNet.Mvc;
 using System;
-using System.Net;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.AspNet.SignalR;
 using HotmenuApp.Hub;

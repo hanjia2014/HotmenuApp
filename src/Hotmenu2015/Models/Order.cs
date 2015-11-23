@@ -1,33 +1,23 @@
-﻿using HotmenuApp.Models;
-using Microsoft.Data.Entity.Metadata;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Runtime.Serialization;
 
 namespace HotmenuApp.Models
 {
-    [DataContract]
     public class Order
     {
         [Key]
-        [DataMember]
         public Guid Id { get; set; }
-        [DataMember]
         [Required]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime Time { get; set; }
-        [DataMember]
         //[JsonConverter(typeof(SingleValueArrayConverter<OrderItem>))]
         public List<OrderItem> Items { get; set; }
-        [DataMember]
         public List<string> ClientNames { get; set; }
-        [DataMember]
         public decimal Total
         {
             get
@@ -35,11 +25,8 @@ namespace HotmenuApp.Models
                 return Items == null || Items.Count == 0 ? 0 : Items.Sum(p => p.Price);
             }
         }
-        [DataMember]
         public string Status { get; set; }
-        [DataMember]
         public string Note { get; set; }
-        [DataMember]
         public int TableNo { get; set; }
         public static Order ConvertJsonToOrder(JObject jOrder)
         {
@@ -80,23 +67,16 @@ namespace HotmenuApp.Models
             return orderItems;
         }
     }
-
-    [DataContract]
+    
     public class OrderItem
     {
-        [DataMember]
         public Guid OrderId { get; set; }
         [Key]
-        [DataMember]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [DataMember]
         public int MenuItemId { get; set; }
-        [DataMember]
         public string MenuItemName { get; set; }
-        [DataMember]
         public string ClientName { get; set; }
-        [DataMember]
         public decimal Price { get; set; }
     }
 }

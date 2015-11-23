@@ -122,7 +122,7 @@ namespace HotmenuApp.Controllers
         [HttpPost]
         public IActionResult LogOff()
         {
-            _signInManager.SignOut();
+            _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
@@ -131,7 +131,7 @@ namespace HotmenuApp.Controllers
             if (!_databaseChecked)
             {
                 _databaseChecked = true;
-                context.Database.AsRelational().ApplyMigrations();
+                context.Database.Migrate();
             }
         }
 

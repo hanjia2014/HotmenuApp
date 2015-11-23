@@ -15,9 +15,9 @@ namespace HotmenuApp.Models
         public DbSet<Foo> Foos { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
 
-        protected override void OnConfiguring(EntityOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Hotmenu;Trusted_Connection=True;MultipleActiveResultSets=true;");
-        }
+        //protected override void OnConfiguring(EntityOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Hotmenu;Trusted_Connection=True;MultipleActiveResultSets=true;");
+        //}
     }
 }

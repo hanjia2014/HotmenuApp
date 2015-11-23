@@ -1,9 +1,7 @@
 ﻿using System;
 using Microsoft.AspNet.SignalR;
 using System.Threading;
-using HotmenuApp.Models;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 namespace HotmenuApp.Hub
 {
